@@ -1,0 +1,3 @@
+[submodule "ld-transformer"]
+	path = ld-transformer
+	url = https://github.com/reinvantveer/ld-transformer.git
