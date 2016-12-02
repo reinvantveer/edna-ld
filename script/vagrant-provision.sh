@@ -10,7 +10,15 @@ chown -R vagrant:vagrant /code
 # Install Node.js (v6) and common global libs
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 apt-get install -y nodejs
-npm install -g mocha istanbul babel-cli babel-preset-es2016 eslint eslint-config-airbnb
+npm install -g mocha \
+  istanbul \
+  babel-cli \
+  babel-preset-es2016 \
+  eslint \
+  eslint-config-airbnb \
+  eslint-plugin-react \
+  eslint-plugin-import
+npm install -g eslint-plugin-jsx-a11y@2.2.3 # pin specific version due to https://github.com/airbnb/javascript/issues/1163
 
 # Install some useful stuff
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -

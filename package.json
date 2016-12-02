@@ -1,0 +1,30 @@
+{
+  "name": "edna-ld",
+  "version": "1.0.0",
+  "description": "A framework for analysing and transforming multi-schema (hundreds of them) CSV to Linked Data",
+  "main": "app.js",
+  "scripts": {
+    "test": "istanbul cover _mocha -- --recursive -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reinvantveer/edna-ld.git"
+  },
+  "author": "Rein van t Veer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reinvantveer/edna-ld/issues"
+  },
+  "homepage": "https://github.com/reinvantveer/edna-ld#readme",
+  "devDependencies": {
+    "eslint": "^3.11.1",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.7.1"
+  },
+  "dependencies": {
+    "bunyan": "^1.8.5",
+    "express": "^4.14.0"
+  }
+}
