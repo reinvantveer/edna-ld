@@ -1,6 +1,9 @@
 # edna-ld
 A framework for analysing and transforming multi-schema (hundreds of them) CSV to Linked Data
 
+# Installation
+clone and run `./install.sh` in the root dir
+
 # Approach
 ## Development environment
 - [X] create Vagrantfile with all requirements
@@ -12,5 +15,5 @@ A framework for analysing and transforming multi-schema (hundreds of them) CSV t
 - [ ] Fix whitespace escaping in pre-processing script
 
 ## Schema analysis
-- [ ] Extract schemas (naively) from all csvs
+- [X] Extract schemas (naively) from all csvs
 - [ ] Extract schemas from geospatial CSVT schemas
