@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-node ld-transformer/bin/analyze.js -i ~/surfdrive/DANS/target/csv/ -e .csv
+ld-transformer/bin/analyze -i ~/surfdrive/DANS/target/flattened/ -e .csv

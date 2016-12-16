@@ -17,17 +17,22 @@ clone and run `./install.sh` in the root dir
 
 ## Schema analysis
 - [X] Extract schemas (naively) from all CSVs
+- [ ] Add sha1 hash to csv file metadata
 
 # Roadmap
-- Enhanced GIS files preprocessing (whitespace, error reporting, custom folder output, validation)
-- Document store ingestion setup of file schemas (a schema metadata collection)
-- Document store ingestion setup of file metadata (a file metadata collection)
-- Document store ingestion setup of JSON-LD documents (one or more content collections)
-- GUI wireframes
-- Templated GUI setup
-- GUI for bulk file schema analysis and reporting
-- GUI for splitting identical file schemas (on partial filenames)
-- GUI for raw editing and saving transformation schemas
-- GUI for bulk transformation and loading of documents
-- Search interface mockup
-- Dockerize application
+|Date |Title|Description|
+|-----|-----|-----------|
+|13-01|Enhanced GIS files preprocessing|whitespace, error reporting, custom folder output, validation|
+|27-01|File schema ingestion|a schema metadata collection|
+|10-02|file metadata ingestion|a file metadata collection|
+|10-02|content ingestion|one or more content collections|
+|24-02|Dashboard GUI wireframes||
+|10-03|Templated dashboard GUI setup|Node.js Express/Jade setup|
+|24-03|File schema GUI|GUI for bulk file schema analysis and reporting|
+|07-04|Split identical file schemas|GUI for splitting identical file schemas on partial filenames|
+|21-04|Transformation schemas editing|GUI for raw editing and saving transformation schemas|
+|05-05|Bulk document transformation|GUI for bulk transformation and loading of documents|
+|19-05|Transformation schemas editing|GUI for raw editing and saving transformation schemas|
+|19-05|Search interface mockup|GUI searching in data|
+|02-06|Search interface implementation|GUI searching in data|
+|09-06|Dockerize application||
