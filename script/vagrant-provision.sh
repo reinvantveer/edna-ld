@@ -20,20 +20,27 @@ npm install -g mocha \
   eslint-plugin-import
 npm install -g eslint-plugin-jsx-a11y@2.2.3 # pin specific version due to https://github.com/airbnb/javascript/issues/1163
 
-# Install some useful stuff
+# Set up Google Chrome key
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
+
+# Set up mongodb community edition key and repo
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
+echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
 apt-get update
 apt-get install -y \
     apt-transport-https \
     ca-certificates \
     git \
     samba \
-    google-chrome-stable
+    google-chrome-stable \
+    mongodb-org
 timedatectl set-timezone Europe/Amsterdam
 locale-gen
 localectl set-locale LANG="en_US.UTF-8"
 
+# Start MongoDB
+service mongod start
 # Setup Docker config
 # mkdir -p /etc/systemd/system/docker.service.d
 # tee /etc/systemd/system/docker.service.d/docker.conf <<-'EOF'
