@@ -12,9 +12,13 @@ clone and run `./install.sh` in the root dir
 
 ## Preprocessing GIS files to GeoCSV
 - [X] A basic script for transforming MapInfo Interchange Format (.mif) files to GeoCSV
+- [ ] Create staging database + collection for raw data to search through
 - [ ] A validated output script for preprocessing GIS files to GeoCSV
 - [ ] Fix whitespace escaping in pre-processing script
 
 ## Schema analysis
 - [X] Extract schemas (naively) from all CSVs
 - [ ] Add sha1 hash to csv file metadata
+
+## Visualization
+- [ ] Create graph layout in express app
