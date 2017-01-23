@@ -67,11 +67,18 @@
     "occurrences": 28,
     "closestRelatives": [
       {
-        "schemaHash": "c6f6797d5542f5d3daef54fc917ebbc3",
+        "schemaHash": "a97338ccec09a459ed6f689aecee708a",
         "patch": [
           {
             "op": "remove",
-            "path": "/items/properties/Spid"
+            "path": "/items/properties/Plaats"
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/Vullingnr",
+            "value": {
+              "type": "string"
+            }
           }
         ]
       }
@@ -816,11 +823,11 @@
     "occurrences": 12,
     "closestRelatives": [
       {
-        "schemaHash": "7d46204ab12a4a806254293e602a41a4",
+        "schemaHash": "675114ebd0c1ce2a550bd098aefe33bd",
         "patch": [
           {
             "op": "remove",
-            "path": "/items/properties/VERWERING"
+            "path": "/items/properties/ST_TYPE"
           },
           {
             "op": "add",
@@ -1732,11 +1739,11 @@
     "occurrences": 11,
     "closestRelatives": [
       {
-        "schemaHash": "7d46204ab12a4a806254293e602a41a4",
+        "schemaHash": "675114ebd0c1ce2a550bd098aefe33bd",
         "patch": [
           {
             "op": "remove",
-            "path": "/items/properties/VERWERING"
+            "path": "/items/properties/ST_TYPE"
           },
           {
             "op": "add",
@@ -1897,26 +1904,25 @@
     "occurrences": 11,
     "closestRelatives": [
       {
-        "schemaHash": "7314810add6b085f3cbbfbb1da65b987",
+        "schemaHash": "c5a63e33cf7377dcf6e55a20702d899d",
         "patch": [
           {
-            "op": "remove",
-            "path": "/items/properties/VLAKNR"
-          },
-          {
-            "op": "remove",
-            "path": "/items/properties/PUTNR"
-          },
-          {
             "op": "add",
-            "path": "/items/properties/AARD",
+            "path": "/items/properties/OPGR_ID",
             "value": {
               "type": "string"
             }
           },
           {
             "op": "add",
-            "path": "/items/properties/OMSCHRIJF",
+            "path": "/items/properties/TEK_CAT",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/TEK_NR",
             "value": {
               "type": "string"
             }
@@ -1931,6 +1937,13 @@
           {
             "op": "add",
             "path": "/items/properties/SCHAAL",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/OPMERKING",
             "value": {
               "type": "string"
             }
@@ -2232,11 +2245,22 @@
     "occurrences": 10,
     "closestRelatives": [
       {
-        "schemaHash": "23e675699c8e5bf058e465c4b3a4989b",
+        "schemaHash": "d4e51f469f6b3ccd7f1ec6269ddced73",
         "patch": [
           {
             "op": "remove",
-            "path": "/items/properties/Vlaknr"
+            "path": "/items/properties/PUTNR"
+          },
+          {
+            "op": "remove",
+            "path": "/items/properties/FID"
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/Putnr",
+            "value": {
+              "type": "string"
+            }
           }
         ]
       }
@@ -3046,15 +3070,183 @@
     "occurrences": 10,
     "closestRelatives": [
       {
-        "schemaHash": "b3e3e8a64bb1d9f5cff14508dce2a13e",
+        "schemaHash": "7314810add6b085f3cbbfbb1da65b987",
         "patch": [
           {
             "op": "remove",
-            "path": "/items/properties/SPECIE"
+            "path": "/items/properties/TEK_NR"
           },
           {
             "op": "remove",
-            "path": "/items/properties/BAKSTEENKLEUR"
+            "path": "/items/properties/TEK_CAT"
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/SPOORNR",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/AARDSPOOR",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/VORM_VLAK",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/VORM_COUPE",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/DIEPTE",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/Z",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/NAP_ONDER",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/STRUCTUUR",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/FOTO",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/GECOUPEERD",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/VERVALLEN",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/IN_COUPE",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/BEGIN_PER",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/EIND_PER",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/BEGIN_DAT",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/EIND_DAT",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/BW_SOORT",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/HARDHEID",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/LENGTE",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/BREEDTE",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/HOOGTE",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/AFMETINGEN",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/ST5N",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/ST10N",
+            "value": {
+              "type": "string"
+            }
           }
         ]
       }
@@ -3204,11 +3396,18 @@
     "occurrences": 8,
     "closestRelatives": [
       {
-        "schemaHash": "a6d59845f98e7950968be8d3689f9be4",
+        "schemaHash": "5736fef828f11313321c1e5b51f925a5",
         "patch": [
           {
             "op": "remove",
-            "path": "/items/properties/RANGNR"
+            "path": "/items/properties/TEK_CAT"
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/KLEUR",
+            "value": {
+              "type": "string"
+            }
           }
         ]
       }
@@ -4287,8 +4486,20 @@
     "occurrences": 8,
     "closestRelatives": [
       {
-        "schemaHash": "52e8a0dae0c00967385f0a292586e89f",
-        "patch": []
+        "schemaHash": "4c2b18a89d3dd89281d7c66556a1b3b2",
+        "patch": [
+          {
+            "op": "remove",
+            "path": "/items/properties/VLAKVORM"
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/HARDHEID",
+            "value": {
+              "type": "string"
+            }
+          }
+        ]
       }
     ]
   },
@@ -5085,11 +5296,14 @@
     "occurrences": 7,
     "closestRelatives": [
       {
-        "schemaHash": "fa6ef734912acebf7d79bf11a5b9fcd1",
+        "schemaHash": "736e6312a3a5cc67402af39f1b979272",
         "patch": [
           {
-            "op": "remove",
-            "path": "/items/properties/TYPE"
+            "op": "add",
+            "path": "/items/properties/VORM",
+            "value": {
+              "type": "string"
+            }
           }
         ]
       }
@@ -5340,11 +5554,18 @@
     "occurrences": 7,
     "closestRelatives": [
       {
-        "schemaHash": "736e6312a3a5cc67402af39f1b979272",
+        "schemaHash": "2d04707ada77a60d958734785fa37fb5",
         "patch": [
           {
             "op": "remove",
-            "path": "/items/properties/FUNCTIE"
+            "path": "/items/properties/ORG_GEH"
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/GROEP",
+            "value": {
+              "type": "string"
+            }
           }
         ]
       }
@@ -5804,11 +6025,57 @@
     "occurrences": 6,
     "closestRelatives": [
       {
-        "schemaHash": "0d1a9b2e0f1d631efe059992a75fc82c",
+        "schemaHash": "fc55b0e2dce76f6984c62b09c899883f",
         "patch": [
           {
             "op": "remove",
-            "path": "/items/properties/ONDERDEEL"
+            "path": "/items/properties/BEWAARCATEGORIE"
+          },
+          {
+            "op": "remove",
+            "path": "/items/properties/BEWAARD"
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/VOLGNR",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/SCANCODE",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/PERIODE",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/ARTEFACTTYPE",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/AFSTOTEN",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/EXPOSABEL",
+            "value": {
+              "type": "string"
+            }
           }
         ]
       }
@@ -6318,8 +6585,20 @@
     "occurrences": 4,
     "closestRelatives": [
       {
-        "schemaHash": "a97338ccec09a459ed6f689aecee708a",
-        "patch": []
+        "schemaHash": "2c787037a2f094bd5e5c3f5b10844646",
+        "patch": [
+          {
+            "op": "remove",
+            "path": "/items/properties/Vullingnr"
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/Plaats",
+            "value": {
+              "type": "string"
+            }
+          }
+        ]
       }
     ]
   },
@@ -6390,11 +6669,18 @@
     "occurrences": 3,
     "closestRelatives": [
       {
-        "schemaHash": "777aeeda95319c75df842bf35d230502",
+        "schemaHash": "95b92c450ad0d26f27eaa5da082764fa",
         "patch": [
           {
             "op": "remove",
-            "path": "/items/properties/FUNCTIE"
+            "path": "/items/properties/METAAL"
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/GROEP",
+            "value": {
+              "type": "string"
+            }
           }
         ]
       }
@@ -6431,11 +6717,14 @@
     "occurrences": 3,
     "closestRelatives": [
       {
-        "schemaHash": "5078bfef9705037dcea58c24bce8ff28",
+        "schemaHash": "777aeeda95319c75df842bf35d230502",
         "patch": [
           {
-            "op": "remove",
-            "path": "/items/properties/TYPE"
+            "op": "add",
+            "path": "/items/properties/VORM",
+            "value": {
+              "type": "string"
+            }
           }
         ]
       }
@@ -6469,11 +6758,14 @@
     "occurrences": 3,
     "closestRelatives": [
       {
-        "schemaHash": "3089a415380c32522d6ed774f7e1dd77",
+        "schemaHash": "6a61bd39475c7ff1d9cb29c491f4afe3",
         "patch": [
           {
-            "op": "remove",
-            "path": "/items/properties/VORM"
+            "op": "add",
+            "path": "/items/properties/FUNCTIE",
+            "value": {
+              "type": "string"
+            }
           }
         ]
       }
@@ -6610,11 +6902,25 @@
     "occurrences": 2,
     "closestRelatives": [
       {
-        "schemaHash": "d2458ef9eb836017f0d14e34606bb142",
+        "schemaHash": "e47feb0e44495716af75732d8713a54c",
         "patch": [
           {
             "op": "remove",
-            "path": "/items/properties/RANGNR"
+            "path": "/items/properties/BAKSOORT"
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/PERIODE",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/DEVENTER",
+            "value": {
+              "type": "string"
+            }
           }
         ]
       }
@@ -7037,11 +7343,46 @@
     "occurrences": 2,
     "closestRelatives": [
       {
-        "schemaHash": "37b08c081d309c9d18f63140dc5a0cb9",
+        "schemaHash": "883855f0d2d86def27bbbbd0641140a8",
         "patch": [
           {
             "op": "remove",
-            "path": "/items/properties/GELAAGD"
+            "path": "/items/properties/AARDSPOOR"
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/OPGR_ID",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/PUTNR",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/VLAKNR",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/SPOORNR",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/VULLINGNR",
+            "value": {
+              "type": "string"
+            }
           }
         ]
       }
@@ -7335,11 +7676,18 @@
     "occurrences": 2,
     "closestRelatives": [
       {
-        "schemaHash": "922d3ea1c2fad37afbb55892969e2ce6",
+        "schemaHash": "9787ef8c3f481dda7a73f7293584867d",
         "patch": [
           {
             "op": "remove",
-            "path": "/items/properties/PER_PRJ144"
+            "path": "/items/properties/FOTOTYPE"
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/PERIODE",
+            "value": {
+              "type": "string"
+            }
           }
         ]
       }
@@ -7393,19 +7741,32 @@
     "occurrences": 2,
     "closestRelatives": [
       {
-        "schemaHash": "0774a8d128d3863d3f52310e0b497379",
+        "schemaHash": "9787ef8c3f481dda7a73f7293584867d",
         "patch": [
           {
             "op": "remove",
-            "path": "/items/properties/VERZWIJZ"
+            "path": "/items/properties/FOTOTYPE"
           },
           {
-            "op": "remove",
-            "path": "/items/properties/ARTEF_ST"
+            "op": "add",
+            "path": "/items/properties/INHOUD",
+            "value": {
+              "type": "string"
+            }
           },
           {
-            "op": "remove",
-            "path": "/items/properties/ARTEF_HT"
+            "op": "add",
+            "path": "/items/properties/ABR_ALG",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/ABR_SPEC",
+            "value": {
+              "type": "string"
+            }
           }
         ]
       }
@@ -7450,8 +7811,20 @@
     "occurrences": 2,
     "closestRelatives": [
       {
-        "schemaHash": "b158163d2873496281df90e106f64780",
-        "patch": []
+        "schemaHash": "a41abe5bfa090d25a9203ac15eb41632",
+        "patch": [
+          {
+            "op": "remove",
+            "path": "/items/properties/VORM_ALG"
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/HARDHEID",
+            "value": {
+              "type": "string"
+            }
+          }
+        ]
       }
     ]
   },
@@ -7682,15 +8055,125 @@
     "occurrences": 2,
     "closestRelatives": [
       {
-        "schemaHash": "cc06a192f37faa6b57b8a47d7b59d026",
+        "schemaHash": "e281705a07665d86f4b0770f9311d5f7",
         "patch": [
           {
             "op": "remove",
-            "path": "/items/properties/DOOSNR"
+            "path": "/items/properties/DATERING SPOOR"
           },
           {
             "op": "remove",
-            "path": "/items/properties/SCANCODE"
+            "path": "/items/properties/AARD SPOOR"
+          },
+          {
+            "op": "remove",
+            "path": "/items/properties/CATALOGUSNR"
+          },
+          {
+            "op": "remove",
+            "path": "/items/properties/SPECIALIST"
+          },
+          {
+            "op": "remove",
+            "path": "/items/properties/LITERATUUR"
+          },
+          {
+            "op": "remove",
+            "path": "/items/properties/XRF monster"
+          },
+          {
+            "op": "remove",
+            "path": "/items/properties/Afbeelding"
+          },
+          {
+            "op": "remove",
+            "path": "/items/properties/TOESTAND"
+          },
+          {
+            "op": "remove",
+            "path": "/items/properties/CONSERVERING"
+          },
+          {
+            "op": "remove",
+            "path": "/items/properties/TYPE"
+          },
+          {
+            "op": "remove",
+            "path": "/items/properties/Hoogte"
+          },
+          {
+            "op": "remove",
+            "path": "/items/properties/Diameter"
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/VULLINGNR",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/VAKNR",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/SEGMENTNR",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/MET_TYPE",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/CONSERV",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/LITERAT",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/OID",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/INVPERS",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/DAT_AKK",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/PERS_AKK",
+            "value": {
+              "type": "string"
+            }
           }
         ]
       }
@@ -7762,7 +8245,7 @@
     "occurrences": 2,
     "closestRelatives": [
       {
-        "schemaHash": "42f21c9a061546bd72029ff3cca403b6",
+        "schemaHash": "94ab749731d1ee5af08203b0f12bb600",
         "patch": [
           {
             "op": "remove",
@@ -7771,6 +8254,17 @@
           {
             "op": "remove",
             "path": "/items/properties/STRUCTUUR"
+          },
+          {
+            "op": "remove",
+            "path": "/items/properties/SPOORNR"
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/SPOORNRS",
+            "value": {
+              "type": "string"
+            }
           }
         ]
       }
@@ -12008,15 +12502,28 @@
     "occurrences": 1,
     "closestRelatives": [
       {
-        "schemaHash": "f550cce9917e92d1664d9c3a4b8d5262",
+        "schemaHash": "95f440f65b77ee4d926b57137aef56fc",
         "patch": [
           {
-            "op": "remove",
-            "path": "/items/properties/FID"
+            "op": "add",
+            "path": "/items/properties/VULLINGNR",
+            "value": {
+              "type": "string"
+            }
           },
           {
-            "op": "remove",
-            "path": "/items/properties/WKT"
+            "op": "add",
+            "path": "/items/properties/Z",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/OPMERKING",
+            "value": {
+              "type": "string"
+            }
           },
           {
             "op": "add",
@@ -12475,13 +12982,6 @@
           },
           {
             "op": "add",
-            "path": "/items/properties/OID",
-            "value": {
-              "type": "string"
-            }
-          },
-          {
-            "op": "add",
             "path": "/items/properties/GEEN_FOTO",
             "value": {
               "type": "string"
@@ -12809,7 +13309,7 @@
     "occurrences": 1,
     "closestRelatives": [
       {
-        "schemaHash": "c0d0880a9fe9f47808a48a698252d06a",
+        "schemaHash": "9fbdd4c629b3434bbdaf88947f02d01b",
         "patch": [
           {
             "op": "remove",
@@ -12817,7 +13317,18 @@
           },
           {
             "op": "remove",
-            "path": "/items/properties/SCANCODE"
+            "path": "/items/properties/INHOUDAW"
+          },
+          {
+            "op": "remove",
+            "path": "/items/properties/in doos"
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/INHOUD",
+            "value": {
+              "type": "string"
+            }
           }
         ]
       }
@@ -15276,11 +15787,67 @@
     "occurrences": 1,
     "closestRelatives": [
       {
-        "schemaHash": "6814da51be7e9aea06718ecd2a3b1c64",
+        "schemaHash": "ca26a18c5c649c8890f125be86c9c28c",
         "patch": [
           {
             "op": "remove",
-            "path": "/items/properties/LFBNR"
+            "path": "/items/properties/herkomst_8"
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/OPGR_ID",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/GEMEENTE",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/TOPONIEM",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/PROV",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/SOORT_OND",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/CISCODE",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/OPMERKING",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/EXTERNPAD",
+            "value": {
+              "type": "string"
+            }
           }
         ]
       }
@@ -15357,11 +15924,78 @@
     "occurrences": 1,
     "closestRelatives": [
       {
-        "schemaHash": "1f97ff58fa05fa34291cd55e7600b513",
+        "schemaHash": "7314810add6b085f3cbbfbb1da65b987",
         "patch": [
           {
             "op": "remove",
-            "path": "/items/properties/DOELVIERKANTEMETERS"
+            "path": "/items/properties/TEK_NR"
+          },
+          {
+            "op": "remove",
+            "path": "/items/properties/TEK_CAT"
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/AANGELEGD",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/GETEKEND",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/GEFOTOGRAFEERD",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/BESCHREVEN",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/GECOUPEERD",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/AFGEWERKT",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/DICHT",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/GECORRIGEERD",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/VIERKANTEMETERS",
+            "value": {
+              "type": "string"
+            }
           }
         ]
       }
@@ -15606,11 +16240,11 @@
     "occurrences": 1,
     "closestRelatives": [
       {
-        "schemaHash": "87bb27193f7108c1837535fa5596cb55",
+        "schemaHash": "2fea1993a24d7709f759933fe419549e",
         "patch": [
           {
             "op": "remove",
-            "path": "/items/properties/Ref_orientatie"
+            "path": "/items/properties/Ref_arm"
           },
           {
             "op": "add",
@@ -15664,19 +16298,32 @@
     "occurrences": 1,
     "closestRelatives": [
       {
-        "schemaHash": "b7915bc6ae30fb8ac8f0cd486e80410b",
+        "schemaHash": "968b6b8dfa46426d25d58a822d3ca302",
         "patch": [
           {
             "op": "remove",
-            "path": "/items/properties/B"
+            "path": "/items/properties/SPECIALIST"
           },
           {
-            "op": "remove",
-            "path": "/items/properties/G"
+            "op": "add",
+            "path": "/items/properties/bakselcode_2-1",
+            "value": {
+              "type": "string"
+            }
           },
           {
-            "op": "remove",
-            "path": "/items/properties/R"
+            "op": "add",
+            "path": "/items/properties/Omschrijf",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/Rangnr",
+            "value": {
+              "type": "string"
+            }
           }
         ]
       }
@@ -15732,11 +16379,53 @@
     "occurrences": 1,
     "closestRelatives": [
       {
-        "schemaHash": "ceaee72225746e97c33dcc58805d9f36",
+        "schemaHash": "968b6b8dfa46426d25d58a822d3ca302",
         "patch": [
           {
             "op": "remove",
-            "path": "/items/properties/LITERATUUR"
+            "path": "/items/properties/SPECIALIST"
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/BAKSELC_DS",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/VORMCOD_DS",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/TYPE_DS",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/TYPEBES_DS",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/BEGINDAT",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/EINDDAT",
+            "value": {
+              "type": "string"
+            }
           }
         ]
       }
@@ -15777,11 +16466,18 @@
     "occurrences": 1,
     "closestRelatives": [
       {
-        "schemaHash": "636fb9c5fa61b41ecfc987a7137aad6e",
+        "schemaHash": "968b6b8dfa46426d25d58a822d3ca302",
         "patch": [
           {
             "op": "remove",
-            "path": "/items/properties/rangnr"
+            "path": "/items/properties/SPECIALIST"
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/baksel_5a",
+            "value": {
+              "type": "string"
+            }
           }
         ]
       }
@@ -16970,11 +17666,44 @@
     "occurrences": 1,
     "closestRelatives": [
       {
-        "schemaHash": "111548e60e77a6b4b91f0dc93f88d30c",
+        "schemaHash": "9c47820c1cdb7b89bcaec8c374522444",
         "patch": [
           {
             "op": "remove",
-            "path": "/items/properties/VOLG_NR"
+            "path": "/items/properties/BAKSEL_DS"
+          },
+          {
+            "op": "remove",
+            "path": "/items/properties/INHOUD"
+          },
+          {
+            "op": "remove",
+            "path": "/items/properties/SCANCODE"
+          },
+          {
+            "op": "remove",
+            "path": "/items/properties/VOLGNR"
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/ABR_ALG",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/ABR_SPEC",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/OPMERKING",
+            "value": {
+              "type": "string"
+            }
           }
         ]
       }
@@ -17300,11 +18029,14 @@
     "occurrences": 1,
     "closestRelatives": [
       {
-        "schemaHash": "981c21c853e4f22f4ab4cc045b116b32",
+        "schemaHash": "0e50c0a9d7ca37818b4669b8c5cca729",
         "patch": [
           {
-            "op": "remove",
-            "path": "/items/properties/STRUCTUUR"
+            "op": "add",
+            "path": "/items/properties/DOELVIERKANTEMETERS",
+            "value": {
+              "type": "string"
+            }
           }
         ]
       }
@@ -17378,11 +18110,71 @@
     "occurrences": 1,
     "closestRelatives": [
       {
-        "schemaHash": "a11ee56f27d55b4b26c5d200b46eb1e6",
+        "schemaHash": "7314810add6b085f3cbbfbb1da65b987",
         "patch": [
           {
             "op": "remove",
-            "path": "/items/properties/Meerwerk"
+            "path": "/items/properties/TEK_NR"
+          },
+          {
+            "op": "remove",
+            "path": "/items/properties/TEK_CAT"
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/VONDSTNR",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/VAKNR",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/SPOORNR",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/VULLINGNR",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/SEGMENTNR",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/INHOUD",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/MONSTER",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/VERZAMEL",
+            "value": {
+              "type": "string"
+            }
           }
         ]
       }
@@ -21114,11 +21906,25 @@
     "occurrences": 1,
     "closestRelatives": [
       {
-        "schemaHash": "c6a476af10857b35564b52264d9a55fa",
+        "schemaHash": "0c66773f779636037416e6da9788b92d",
         "patch": [
           {
             "op": "remove",
-            "path": "/items/properties/VLAKNR"
+            "path": "/items/properties/Putnr"
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/FID",
+            "value": {
+              "type": "string"
+            }
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/PUTNR",
+            "value": {
+              "type": "string"
+            }
           }
         ]
       }
@@ -22854,8 +23660,20 @@
     "occurrences": 1,
     "closestRelatives": [
       {
-        "schemaHash": "bacbca74f2600d24626b274f91008dda",
-        "patch": []
+        "schemaHash": "2c787037a2f094bd5e5c3f5b10844646",
+        "patch": [
+          {
+            "op": "remove",
+            "path": "/items/properties/Vullingnr"
+          },
+          {
+            "op": "add",
+            "path": "/items/properties/Plaats",
+            "value": {
+              "type": "string"
+            }
+          }
+        ]
       }
     ]
   },

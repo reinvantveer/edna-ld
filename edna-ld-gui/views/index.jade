@@ -2,74 +2,56 @@ doctype html
 html
   head
     title= 'File schema graph'
-    script(src='http://cytoscape.github.io/cytoscape.js/api/cytoscape.js-latest/cytoscape.min.js')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous')
+    script(src='https://code.jquery.com/jquery-3.1.1.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin='anonymous')
   body
     block content
-      h1='File schema graph'
-      p Look at all the pretty schemas!
-      div(id="cy")
+      nav.navbar.navbar-inverse
+        .container-fluid
+          .navbar-header
+            a.navbar-brand(href='#') Schema alignment and mapping
+          ul.nav.navbar-nav
+            li.active
+              a(href='#') Schema graph
+            li
+              a(href='#') Schema mappings
+            li
+              a(href='#') Files and data
+            li
+              a(href='#') Mapped data
+      h1 Schema graph
+      section(style='width:100%')
+      div(style='float:left;width:70%')
+        canvas(width='980' height='600')
+        svg(width='980' height='480')
+      div(style='margin-left:70%')
+        h2 Schema
+        span(id='hashText' class='glyphicon glyphicon-tag')
+        br
+        br
+        span(id='occurrences' class='glyphicon glyphicon-file')
+        br
+        br
+        span(id='nearestNeighbour' class='glyphicon glyphicon-link')
+        br
+        br
+        a(href='#diff' class='glyphicon glyphicon-retweet' data-toggle='collapse')
+        i Click icon to expand/collapse
+        div(id='diff' class='collapse')
+        br
+        br
+        a(href='#files' class='glyphicon glyphicon-list' data-toggle='collapse')
+        i Click icon to expand/collapse
+        div(id='files' class='collapse')
+        br
+        br
+        a(href='#schemaCode' class='glyphicon glyphicon-barcode' data-toggle='collapse')
+        i Click icon to expand/collapse
+        pre
+          code(id='schemaCode' class='collapse')
+
       script.
         const graphData = !{graph};
-
-        const graph = {
-          nodes: graphData.map(schema => {
-            schema.id = schema.hash;
-            return { data: schema };
-          }),
-          edges: graphData.map(schema => {
-            return {
-              data: {
-                id: 'edge' + schema.hash,
-                source: schema.hash,
-                target: schema.closestRelatives[0].schemaHash
-              }
-            };
-          })
-        };
-
-        const cy = cytoscape({
-          container: document.getElementById('cy'),
-          layout: {
-            name: 'breadthfirst',
-
-            fit: true, // whether to fit the viewport to the graph
-            directed: false, // whether the tree is directed downwards (or edges can point in any direction if false)
-            padding: 30, // padding on fit
-            circle: true, // put depths in concentric circles if true, put depths top down if false
-            spacingFactor: 1.75, // positive spacing factor, larger => more space between nodes (N.B. n/a if causes overlap)
-            boundingBox: undefined, // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
-            avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
-            roots: undefined, // the roots of the trees
-            maximalAdjustments: 0, // how many times to try to position the nodes in a maximal way (i.e. no backtracking)
-            animate: false, // whether to transition the node positions
-            animationDuration: 500, // duration of animation in ms if enabled
-            animationEasing: undefined, // easing of animation if enabled
-            ready: undefined, // callback on layoutready
-            stop: undefined // callback on layoutstop
-          },
-          style: [
-            {
-              selector: 'node',
-              style: {
-                'label': 'data(hash)',
-                'font-size': 8,
-                'background-color': '#ea8a31'
-              }
-            },
-            {
-              selector: 'edge',
-              style: {
-                'curve-style': 'haystack',
-                'haystack-radius': 0,
-                'width': 3,
-                'opacity': 0.666,
-                'line-color': '#fcc694'
-              }
-            }
-          ],
-          elements: graph
-        });
-
-        const layout = cy.makeLayout({name: 'cose'});
-        layout.run();
+      script(src='/scripts/app.js')

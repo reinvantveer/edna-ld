@@ -1,7 +1,11 @@
 {
-    "node": true,
-    "extends": "airbnb",
-    "plugins": [
-        "import"
-    ]
+  "node": true,
+  "extends": "airbnb",
+  "plugins": [
+      "import"
+  ],
+  "rules": {
+    "arrow-parens": 0,
+    "comma-dangle": 0
+  }
 }
