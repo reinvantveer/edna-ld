@@ -17,6 +17,7 @@ Then, run `script/analyze.sh` to create a staging environment. After it has fini
 
 ## Preprocessing GIS files to GeoCSV
 - [X] A basic script for transforming MapInfo Interchange Format (.mif) files to GeoCSV
+- [ ] Do not allow two schemas to be their own/only closest relatives
 - [ ] A validated output script for preprocessing GIS files to GeoCSV
 - [ ] Create a schema metadata collection during analysis stage
 - [ ] Create staging collection for file metadata during analysis stage
@@ -30,6 +31,9 @@ Then, run `script/analyze.sh` to create a staging environment. After it has fini
 ## Visualization
 - [X] Create graph layout in express app
 - [ ] Create a schema mapping layout
+- [ ] Create arrows indicating graph directionality
+- [ ] Let schema view query API instead of source file
+- [ ] Allow manual schema closest relative remapping
 - [ ] Allow schema map splitting depending on file metadata
 - [ ] Create file layout in express, 
 - [ ] see whether the file has been preprocessed
