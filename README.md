@@ -12,12 +12,11 @@ Then, run `script/analyze.sh` to create a staging environment. After it has fini
 # Approach
 ## Development environment & deployment
 - [X] create Vagrantfile with all requirements
-- [ ] Fix the Docker setup
+- [ ] Docker setup
 - [X] Create port forwarding rules
 
 ## Preprocessing GIS files to GeoCSV
 - [X] A basic script for transforming MapInfo Interchange Format (.mif) files to GeoCSV
-- [ ] Do not allow two schemas to be their own/only closest relatives
 - [ ] A validated output script for preprocessing GIS files to GeoCSV
 - [ ] Create a schema metadata collection during analysis stage
 - [ ] Create staging collection for file metadata during analysis stage
@@ -26,11 +25,19 @@ Then, run `script/analyze.sh` to create a staging environment. After it has fini
 
 ## Schema analysis
 - [X] Extract schemas (naively) from all CSVs
+- [ ] Optionally disallow two schemas to be their own/only closest relatives
+- [ ] Load source data into staging area
+- [ ] Parameterize schema diff sorting
+- [ ] Make schema comparison optionally case insensitive
 - [ ] Add sha1 hash to csv file metadata
 
 ## Visualization
 - [X] Create graph layout in express app
-- [ ] Create a schema mapping layout
+- [X] Visualize schema diff
+- [ ] AJAX load graph data (instead of jade inject)
+- [ ] Visualize schema diff per linked schema
+- [X] Group collapsed files under file heading
+- [X] Create a schema mapping dummy layout
 - [ ] Create arrows indicating graph directionality
 - [ ] Let schema view query API instead of source file
 - [ ] Allow manual schema closest relative remapping

@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-node edna-ld-gui/bin/www
+webpack edna-ld-gui/src/app.js edna-ld-gui/public/js/app.js
+nodemon edna-ld-gui/bin/www
