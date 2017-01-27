@@ -7,4 +7,23 @@ html
     script(src='/js/jquery-3.1.1.min.js')
     script(src='/js/bootstrap.min.js')
   body
+    nav.navbar.navbar-inverse
+      .container-fluid
+        .navbar-header
+          a.navbar-brand(href='/') Schema alignment and mapping
+        ul.nav.navbar-nav
+          li(id='nav-schema')
+            a(href='schema') Schema graph
+          li(id='nav-mapping')
+            a(href='mapping') Schema mappings
+          li(id='nav-sourcedata')
+            a(href='sourcedata') Files and data
+          li(id='nav-targetdata')
+            a(href='targetdata') Mapped data
+    script.
+      var section = window.location.pathname
+        .split('/')
+        .slice(-1);
+
+      $('#nav-' + section).addClass('active');
     block content

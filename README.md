@@ -37,7 +37,10 @@ Then, run `script/analyze.sh` to create a staging environment. After it has fini
 - [ ] AJAX load graph data (instead of jade inject)
 - [ ] Visualize schema diff per linked schema
 - [X] Group collapsed files under file heading
+- [X] Create home layout
 - [X] Create a schema mapping dummy layout
+- [X] Create a source data dummy layout
+- [X] Create a target data dummy layout
 - [ ] Create arrows indicating graph directionality
 - [ ] Let schema view query API instead of source file
 - [ ] Allow manual schema closest relative remapping

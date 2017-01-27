@@ -3,9 +3,20 @@ const graphLoader = require('../lib/graphLoader');
 
 const router = express.Router();
 
-/* GET home page. */
 router.get('/', (req, res) => {
   res.render('index', { title: 'Home' });
+});
+
+router.get('/mapping', (req, res) => {
+  res.render('mapping', { title: 'Schema mapping' });
+});
+
+router.get('/sourcedata', (req, res) => {
+  res.render('sourcedata', { title: 'Source files and data' });
+});
+
+router.get('/targetdata', (req, res) => {
+  res.render('targetdata', { title: 'Mapped data' });
 });
 
 router.get('/schema', (req, res) => {

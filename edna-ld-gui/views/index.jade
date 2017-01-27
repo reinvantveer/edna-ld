@@ -1,19 +1,6 @@
 extends layout
 
 block content
-  nav.navbar.navbar-inverse
-    .container-fluid
-      .navbar-header
-        a.navbar-brand(href='#') Schema alignment and mapping
-      ul.nav.navbar-nav
-        li.active
-          a(href='#') Schema graph
-        li
-          a(href='#') Schema mappings
-        li
-          a(href='#') Files and data
-        li
-          a(href='#') Mapped data
   .jumbotron
     h1 Bulk schema analysis and file mapping
     p This application allows you to do
@@ -24,3 +11,9 @@ block content
         li file mapping to linked data
     p
       a.btn.btn-primary.btn-lg(href='schema', role='button') Schema analysis
+      br
+      a.btn.btn-primary.btn-lg(href='mapping', role='button') Data mapping
+      br
+      a.btn.btn-primary.btn-lg(href='sourcedata', role='button') Source files and data
+      br
+      a.btn.btn-primary.btn-lg(href='targetdata', role='button') Mapped data
