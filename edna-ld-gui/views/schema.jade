@@ -1,0 +1,36 @@
+//
+   Created by vagrant on 1/27/17.
+
+extends layout
+
+block content
+  h1 Schema graph
+  section(style='width:100%')
+  div(style='float:left;width:70%')
+    canvas(width='980' height='600')
+    svg(width='980' height='480')
+  div(style='margin-left:70%')
+    h2 Schema
+    span(id='hashText' class='glyphicon glyphicon-tag')
+    br
+    br
+    a(href='#files' id='occurrences' data-toggle='collapse' class='glyphicon glyphicon-file')
+    div(id='files' class='collapse')
+    br
+    br
+    span(id='nearestNeighbour' class='glyphicon glyphicon-link')
+    br
+    br
+    a(href='#diff' class='glyphicon glyphicon-retweet' data-toggle='collapse')
+    i Click icon to expand/collapse
+    div(id='diff' class='collapse')
+    br
+    br
+    a(href='#schemaCode' class='glyphicon glyphicon-barcode' data-toggle='collapse')
+    i Click icon to expand/collapse
+    pre
+      code(id='schemaCode' class='collapse')
+
+  script.
+    const graphData = !{graph};
+  script(src='/js/app.js')

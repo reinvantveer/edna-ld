@@ -75,7 +75,14 @@ const simulation = d3.forceSimulation(nodes)
 function setInfoBox(subject) {
   $('#hashText').text(subject.hash);
 
-  $('#occurrences').text(`${subject.occurrences} files`);
+  $('#occurrences').text(`${subject.occurrences} files (Click to expand/collapse)`);
+  let fileList = '';
+  subject.files.forEach(file => fileList += `<li>${file}</li>`);
+  $('#files')
+    .empty()
+    .append('<ul>')
+    .append(fileList)
+    .append('</ul>');
 
   const relatedHash = subject.closestRelatives[0].schemaHash;
   $('#nearestNeighbour')
@@ -85,8 +92,12 @@ function setInfoBox(subject) {
   $('#diff')
     .empty();
   subject.closestRelatives.forEach(relative => {
-    $('#diff')
-      .append(`<li>${relative.patch}</li>`);
+    relative.patch.forEach(patchOperation => {
+      $('#diff')
+        .append(`<span class="glyphicon
+            ${patchOperation.op === 'add' ? ' glyphicon-plus' : ' glyphicon-minus'}
+            ">${patchOperation.path}</span><br/>`);
+    });
   });
 
   $(`#${relatedHash}`)
@@ -97,14 +108,6 @@ function setInfoBox(subject) {
           setInfoBox(node);
         });
     });
-
-  let fileList = '';
-  subject.files.forEach(file => fileList += `<li>${file}</li>`);
-  $('#files')
-    .empty()
-    .append('<ul>')
-    .append(fileList)
-    .append('</ul>');
 
   $('#schemaCode').text(JSON.stringify(subject.schema, null, 2));
 
