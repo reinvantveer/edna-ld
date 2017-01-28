@@ -18,15 +18,16 @@ Then, run `script/analyze.sh` to create a staging environment. After it has fini
 ## Preprocessing GIS files to GeoCSV
 - [X] A basic script for transforming MapInfo Interchange Format (.mif) files to GeoCSV
 - [ ] A validated output script for preprocessing GIS files to GeoCSV
-- [ ] Create a schema metadata collection during analysis stage
-- [ ] Create staging collection for file metadata during analysis stage
-- [ ] Create staging collection for raw data to search for mapping during analysis stage
 - [ ] Fix whitespace escaping in pre-processing script
 
 ## Schema analysis
 - [X] Extract schemas (naively) from all CSVs
+- [X] Load source data into staging area
+- [X] Load file metadata in files collection
+- [ ] Create source data API
+- [ ] Optionally store data in mongodb (default false)
+- [ ] Load schema data in schemas collection
 - [ ] Optionally disallow two schemas to be their own/only closest relatives
-- [ ] Load source data into staging area
 - [ ] Parameterize schema diff sorting
 - [ ] Make schema comparison optionally case insensitive
 - [ ] Add sha1 hash to csv file metadata
@@ -34,15 +35,18 @@ Then, run `script/analyze.sh` to create a staging environment. After it has fini
 ## Visualization
 - [X] Create graph layout in express app
 - [X] Visualize schema diff
-- [ ] AJAX load graph data (instead of jade inject)
-- [ ] Visualize schema diff per linked schema
 - [X] Group collapsed files under file heading
 - [X] Create home layout
 - [X] Create a schema mapping dummy layout
 - [X] Create a source data dummy layout
 - [X] Create a target data dummy layout
+- [ ] AJAX load graph data (instead of jade inject)
+- [ ] Visualize schema diff per linked schema
+- [ ] Allow graph zooming
+- [ ] Allow graph panning
 - [ ] Create arrows indicating graph directionality
 - [ ] Let schema view query API instead of source file
+- [ ] Limit unscrolled file list to 10 files
 - [ ] Allow manual schema closest relative remapping
 - [ ] Allow schema map splitting depending on file metadata
 - [ ] Create file layout in express, 
