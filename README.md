@@ -24,9 +24,10 @@ Then, run `script/analyze.sh` to create a staging environment. After it has fini
 - [X] Extract schemas (naively) from all CSVs
 - [X] Load source data into staging area
 - [X] Load file metadata in files collection
-- [ ] Create source data API
-- [ ] Optionally store data in mongodb (default false)
+- [ ] Create file metadata API endpoint
+- [ ] Create source data API endpoint
 - [ ] Load schema data in schemas collection
+- [ ] Optionally store data in mongodb (default false)
 - [ ] Optionally disallow two schemas to be their own/only closest relatives
 - [ ] Parameterize schema diff sorting
 - [ ] Make schema comparison optionally case insensitive
