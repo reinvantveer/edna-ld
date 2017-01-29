@@ -26,16 +26,18 @@ Then, run `script/analyze.sh` to create a staging environment. After it has fini
 - [X] Load file metadata in files collection
 - [X] Create file metadata API endpoint
 - [X] Create source data API endpoint
-- [ ] Bulk upsert source data
 - [ ] Upsert file metadata rather than insert (overwrite data)
-- [ ] Upsert schema data in schemas collection
+- [X] Upsert schema data in schemas collection
+- [ ] Create schema API endpoint
+- [ ] Bulk upsert source data
 - [ ] Create multiple nearest neighbour links for manual selection
+- [ ] Sort schemas on # of shared lowercase field names first
 - [ ] Bugfix: how is PROJECT schema derived from R_AWDS8?
-- [ ] Optionally store data in mongodb (default false)
-- [ ] Optionally disallow two schemas to be their own/only closest relatives
-- [ ] Parameterize schema diff sorting
+- [ ] (Optionally) disallow two schemas to be their own/only closest relatives
 - [ ] Make schema comparison optionally case insensitive
-- [ ] Add sha1 hash to csv file metadata
+- [ ] Add file content hash to csv file metadata
+- [ ] Parameterize schema diff sorting
+- [ ] Optionally store data in mongodb (default false)
 
 ## Visualization
 - [X] Create graph layout in express app
@@ -45,17 +47,17 @@ Then, run `script/analyze.sh` to create a staging environment. After it has fini
 - [X] Create a schema mapping dummy layout
 - [X] Create a source data dummy layout
 - [X] Create a target data dummy layout
+- [X] Create file layout in express, 
+- [ ] Create arrows indicating graph directionality
+- [ ] Set source data table height to partial window height
 - [ ] Color schema circles by number of attributes
 - [ ] AJAX load graph data (instead of jade inject)
 - [ ] Visualize schema diff per linked schema
-- [ ] Allow graph zooming
-- [ ] Allow graph panning
-- [ ] Create arrows indicating graph directionality
-- [ ] Let schema view query API instead of source file
+- [ ] Allow graph [zooming and panning](http://codepen.io/techslides/pen/zowLd)
+- [ ] Let schema view query schema API (instead of schema file)
 - [ ] Limit unscrolled file list to 10 files
-- [ ] Allow manual schema closest relative remapping
+- [ ] Allow manual closest schema relative [remapping](http://bl.ocks.org/rkirsling/5001347)
 - [ ] Allow schema map splitting depending on file metadata
-- [ ] Create file layout in express, 
 - [ ] see whether the file has been preprocessed
 - [ ] see whether the file has been converted
 - [ ] Percolate files with errors to the top
