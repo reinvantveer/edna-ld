@@ -24,9 +24,13 @@ Then, run `script/analyze.sh` to create a staging environment. After it has fini
 - [X] Extract schemas (naively) from all CSVs
 - [X] Load source data into staging area
 - [X] Load file metadata in files collection
-- [ ] Create file metadata API endpoint
-- [ ] Create source data API endpoint
-- [ ] Load schema data in schemas collection
+- [X] Create file metadata API endpoint
+- [X] Create source data API endpoint
+- [ ] Bulk upsert source data
+- [ ] Upsert file metadata rather than insert (overwrite data)
+- [ ] Upsert schema data in schemas collection
+- [ ] Create multiple nearest neighbour links for manual selection
+- [ ] Bugfix: how is PROJECT schema derived from R_AWDS8?
 - [ ] Optionally store data in mongodb (default false)
 - [ ] Optionally disallow two schemas to be their own/only closest relatives
 - [ ] Parameterize schema diff sorting
@@ -41,6 +45,7 @@ Then, run `script/analyze.sh` to create a staging environment. After it has fini
 - [X] Create a schema mapping dummy layout
 - [X] Create a source data dummy layout
 - [X] Create a target data dummy layout
+- [ ] Color schema circles by number of attributes
 - [ ] AJAX load graph data (instead of jade inject)
 - [ ] Visualize schema diff per linked schema
 - [ ] Allow graph zooming

@@ -1,9 +1,16 @@
 //
-   Created by vagrant on 1/27/17.
+   Created by reinvantveer on 1/27/17.
 
 extends layout
 
 block content
-  .jumbotron
-    h1 Bulk schema analysis and file mapping
-    p This application allows you to do
+  h1 Source files and data
+  div
+    div(style='float:left;width:20%')
+      h2 File:
+      div(id='fileMetadata')
+    div(style='margin-left:20%;')
+      h2 Data:
+      div(id='sourcedata' style='overflow-x: auto;')
+        table.table.table-striped(id='sourceDataTable')
+        script(src='/js/sourcedataApp.js')

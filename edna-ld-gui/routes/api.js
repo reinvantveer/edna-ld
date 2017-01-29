@@ -21,7 +21,7 @@ MongoClient.connect(dbUrl)
 
     router.get('/files', (req, res) => {
       if (req.query.filepath) {
-        return collections.fileCollection.findOne({filePath: req.query.filepath})
+        return collections.fileCollection.findOne({ filePath: req.query.filepath })
           .then(fileStats => {
             if (fileStats) return res.json(fileStats);
             return res.status(404).json({ error: 'not found' });
@@ -36,7 +36,19 @@ MongoClient.connect(dbUrl)
     });
 
     router.get('/sourcedata', (req, res) => {
-      res.json({ response: 'respond with source data' });
+      if (req.query.filepath) {
+        return collections.sourcedataCollection.find({ filePath: req.query.filepath })
+          .toArray((err, fileStats) => {
+            if (err) {
+              console.log(err);
+              return res.json(err);
+            }
+            if (fileStats) return res.json(fileStats);
+            return res.status(404).json({ error: 'not found' });
+          });
+      }
+
+      return res.json({ hint: 'use with query ?filepath={filepath}' });
     });
   });
 

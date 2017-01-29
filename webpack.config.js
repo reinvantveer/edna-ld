@@ -4,9 +4,12 @@
 var path = require('path');
 
 module.exports = {
-  entry: './edna-ld-gui/src/app.js',
+  entry: {
+    schemaApp: './edna-ld-gui/src/schemaApp.js',
+    sourcedataApp: './edna-ld-gui/src/sourcedataApp.js'
+  },
   output: {
     path: './edna-ld-gui/public/js/',
-    filename: 'app.js'
+    filename: '[name].js'
   }
 };

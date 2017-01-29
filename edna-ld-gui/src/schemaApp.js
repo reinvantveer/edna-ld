@@ -73,11 +73,13 @@ const simulation = d3.forceSimulation(nodes)
   .on('tick', ticked);
 
 function setInfoBox(subject) {
+  // Set schema hash
   $('#hashText').text(subject.hash);
 
+  // Build file list
   $('#occurrences').text(`${subject.occurrences} files (Click to expand/collapse)`);
   let fileList = '';
-  subject.files.forEach(file => fileList += `<li>${file}</li>`);
+  subject.files.forEach(file => fileList += `<li><a href="/sourcedata#${file}">${file}</a></li>`);
   $('#files')
     .empty()
     .append('<ul>')
