@@ -1,3 +1,5 @@
+/* global document */
+
 'use strict';
 
 const d3 = require('d3');
@@ -61,6 +63,7 @@ $.get('/api/v1/schemas', (graphData, status) => {
 
   const nodes = graphData.map(schema => xtend(schema, { id: schema.hash }));
 
+  /* eslint arrow-body-style: ["error", "as-needed", { "requireReturnForObjectLiteral": true }]*/
   const edges = graphData.map(schema => {
     return {
       id: `edge-${schema.hash}`,
@@ -80,9 +83,7 @@ $.get('/api/v1/schemas', (graphData, status) => {
    .on('zoom', zoomed));
    */
 
-  function ticked() {
-    tick(edges, nodes);
-  }
+  function ticked() { tick(edges, nodes); }
 
   const simulation = d3.forceSimulation(nodes)
     .force('charge', d3.forceManyBody(nodes).distanceMin(d => (d.strength * 20)))
@@ -125,10 +126,22 @@ $.get('/api/v1/schemas', (graphData, status) => {
           });
       });
 
-    // Build diff visuals for closest relative
+    // Build diff visuals for closest relatives
     $('#diff')
       .empty();
     subject.closestRelatives.forEach(relative => {
+      $('#diff').append(`<a id="${relative.schemaHash}" href="#">${relative.schemaHash}</a>`);
+
+      // Create related parent click behaviour
+      $(`#${relative.schemaHash}`)
+        .on('click', () => {
+          nodes.filter(node => node.hash === relative.schemaHash)
+            .forEach(node => {
+              selectedNode = node.hash;
+              setInfoBox(node);
+            });
+        });
+
       relative.patch.forEach(patchOperation => {
         $('#diff')
           .append(`<span class="glyphicon
@@ -139,7 +152,7 @@ $.get('/api/v1/schemas', (graphData, status) => {
 
     $('#schemaCode').text(JSON.stringify(subject.schema, null, 2));
 
-    ticked();
+    return ticked();
   }
 
   function dragstarted() {
@@ -158,12 +171,12 @@ $.get('/api/v1/schemas', (graphData, status) => {
   }
 
   function dragended() {
-    if (!d3.event.active) simulation.alphaTarget(0.1);
+    if (!d3.event.active) simulation.alphaTarget(0);
     d3.event.subject.fx = null;
     d3.event.subject.fy = null;
   }
 
-  d3.select(canvas)
+  return d3.select(canvas)
     .call(d3.drag()
       .container(canvas)
       .subject(() => simulation.find(d3.event.x - (width / 2), d3.event.y - (height / 2)))

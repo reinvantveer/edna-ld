@@ -26,18 +26,18 @@ Then, run `script/analyze.sh` to create a staging environment. After it has fini
 - [X] Load file metadata in files collection
 - [X] Create file metadata API endpoint
 - [X] Create source data API endpoint
-- [ ] Upsert file metadata rather than insert (overwrite data)
+- [X] Upsert file metadata rather than insert (overwrite data)
 - [X] Upsert schema data in schemas collection
 - [X] Create schema API endpoint
-- [ ] Add file content hash to csv file metadata
-- [ ] Bulk upsert source data
-- [ ] Create multiple nearest neighbour links for manual selection
+- [X] Add file content hash to csv file metadata
+- [X] Create 10 nearest neighbour links for optional manual selection
 - [ ] Sort schemas on # of shared lowercase field names first
 - [ ] Bugfix: how is PROJECT schema derived from R_AWDS8?
 - [ ] (Optionally) disallow two schemas to be their own/only closest relatives
 - [ ] Make schema comparison optionally case insensitive
 - [ ] Parameterize schema diff sorting
 - [ ] Optionally store data in mongodb (default false)
+- [ ] Bulk upsert source data
 
 ## Visualization
 - [X] Create graph layout in express app
@@ -49,12 +49,12 @@ Then, run `script/analyze.sh` to create a staging environment. After it has fini
 - [X] Create a target data dummy layout
 - [X] Create file layout in express
 - [X] Load graph data from API (instead of jade inject)
+- [X] Schema page queries schema API (instead of schema file)
+- [X] Visualize schema diff for each outgoing linked schema
 - [ ] Create arrows indicating graph directionality
 - [ ] Set source data table height to partial window height
 - [ ] Color schema circles by number of attributes
-- [ ] Visualize schema diff per linked schema
 - [ ] Allow graph [zooming and panning](http://codepen.io/techslides/pen/zowLd)
-- [ ] Let schema view query schema API (instead of schema file)
 - [ ] Limit unscrolled file list to 10 files
 - [ ] Allow manual closest schema relative [remapping](http://bl.ocks.org/rkirsling/5001347)
 - [ ] Allow schema map splitting depending on file metadata
