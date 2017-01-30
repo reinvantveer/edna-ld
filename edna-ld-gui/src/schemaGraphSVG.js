@@ -18,7 +18,7 @@ const edges = graphData.map(schema => {
 
 const svg = d3.select('svg');
 
-function ticked() {
+function ticked(link, node) {
   link
     .attr('x1', d => d.source.x)
     .attr('y1', d => d.source.y)

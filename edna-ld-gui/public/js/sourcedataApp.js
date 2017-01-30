@@ -59,7 +59,7 @@
 	  const filePath = appPath.split('#')[1];
 
 	  $.get(`/api/v1/files?filepath=${filePath}`, (data, status) => {
-	    if (!status === 'success') return console.error(status);
+	    if (status !== 'success') return console.error(status);
 	    $('#fileMetadata')
 	      .empty();
 

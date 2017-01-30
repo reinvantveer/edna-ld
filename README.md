@@ -28,14 +28,14 @@ Then, run `script/analyze.sh` to create a staging environment. After it has fini
 - [X] Create source data API endpoint
 - [ ] Upsert file metadata rather than insert (overwrite data)
 - [X] Upsert schema data in schemas collection
-- [ ] Create schema API endpoint
+- [X] Create schema API endpoint
+- [ ] Add file content hash to csv file metadata
 - [ ] Bulk upsert source data
 - [ ] Create multiple nearest neighbour links for manual selection
 - [ ] Sort schemas on # of shared lowercase field names first
 - [ ] Bugfix: how is PROJECT schema derived from R_AWDS8?
 - [ ] (Optionally) disallow two schemas to be their own/only closest relatives
 - [ ] Make schema comparison optionally case insensitive
-- [ ] Add file content hash to csv file metadata
 - [ ] Parameterize schema diff sorting
 - [ ] Optionally store data in mongodb (default false)
 
@@ -47,11 +47,11 @@ Then, run `script/analyze.sh` to create a staging environment. After it has fini
 - [X] Create a schema mapping dummy layout
 - [X] Create a source data dummy layout
 - [X] Create a target data dummy layout
-- [X] Create file layout in express, 
+- [X] Create file layout in express
+- [X] Load graph data from API (instead of jade inject)
 - [ ] Create arrows indicating graph directionality
 - [ ] Set source data table height to partial window height
 - [ ] Color schema circles by number of attributes
-- [ ] AJAX load graph data (instead of jade inject)
 - [ ] Visualize schema diff per linked schema
 - [ ] Allow graph [zooming and panning](http://codepen.io/techslides/pen/zowLd)
 - [ ] Let schema view query schema API (instead of schema file)

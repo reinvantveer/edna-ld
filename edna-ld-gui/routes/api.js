@@ -1,5 +1,6 @@
 'use strict';
 
+// Express setup
 const express = require('express');
 
 const router = express.Router({
@@ -18,6 +19,16 @@ MongoClient.connect(dbUrl)
       fileCollection: mongodb.collection('files'),
       sourcedataCollection: mongodb.collection('sourcedata')
     };
+
+
+    // Routes are appended to /api/v1 according to ../app.js
+    router.get('/schemas', (req, res) => {
+      return collections.schemaCollection.find({})
+        .toArray((err, schemas) => {
+          if (err) return res.json(err);
+          return res.json(schemas);
+        });
+    });
 
     router.get('/files', (req, res) => {
       if (req.query.filepath) {
@@ -50,6 +61,7 @@ MongoClient.connect(dbUrl)
 
       return res.json({ hint: 'use with query ?filepath={filepath}' });
     });
-  });
+  })
+  .catch(console.error);
 
 module.exports = router;
