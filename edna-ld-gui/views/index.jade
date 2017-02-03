@@ -9,7 +9,12 @@ block content
         li schema derivation
         li file splitting
         li file mapping to linked data
+    p You have selected the path !{path}
+    p The file filter is on the file extension !{extension}
+    a.btn.btn-primary.btn-lg(id='startAnalysis', role='button') Start analysis
+    div(id="messages")
     p
+      p Go to other sections (see also top menu)
       a.btn.btn-primary.btn-lg(href='schema', role='button') Schema analysis
       br
       a.btn.btn-primary.btn-lg(href='mapping', role='button') Data mapping
@@ -17,3 +22,7 @@ block content
       a.btn.btn-primary.btn-lg(href='sourcedata', role='button') Source files and data
       br
       a.btn.btn-primary.btn-lg(href='targetdata', role='button') Mapped data
+  script.
+    var inputFolder = '!{path}';
+    var extension = '!{extension}';
+  script(src='/js/indexApp.js')

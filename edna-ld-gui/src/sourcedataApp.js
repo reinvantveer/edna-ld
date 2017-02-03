@@ -7,7 +7,6 @@
 const $ = require('jquery');
 
 const appPath = window.location.href;
-console.log(appPath);
 
 if (appPath.split('#')[1]) {
   const filePath = appPath.split('#')[1];

@@ -10,13 +10,22 @@ First, convert all your favorite source files to CSV. There's a script in the `s
 Then, run `script/analyze.sh` to create a staging environment. After it has finished, you can open your browser and point it to http://localhost:3000. Here you can convert the data interactively.
 
 # Approach
+## Research
+- [ ] Investigate whether schema graph can be let loose on existing mapping tool
+- [ ] Ontology alignment and evaluation initiative
+- [ ] ontology alignment tools
+- [ ] Cerdeira survey paper on matching tools
+- [ ] Hierarchy based on pure parents
+- [ ] Internal evaluation of different sorting/scoring algorithms
+
 ## Development environment & deployment
 - [X] create Vagrantfile with all requirements
 - [ ] Docker setup
 - [X] Create port forwarding rules
 
-## Preprocessing GIS files to GeoCSV
+## Preprocessing files
 - [X] A basic script for transforming MapInfo Interchange Format (.mif) files to GeoCSV
+- [ ] Add 12 projects for major organisations
 - [ ] A validated output script for preprocessing GIS files to GeoCSV
 - [ ] Fix whitespace escaping in pre-processing script
 
@@ -31,6 +40,10 @@ Then, run `script/analyze.sh` to create a staging environment. After it has fini
 - [X] Create schema API endpoint
 - [X] Add file content hash to csv file metadata
 - [X] Create 10 nearest neighbour links for optional manual selection
+- [ ] Weighted edges rather than sorted
+- [ ] Kick off analysis through UI
+- [ ] Analysis reports to UI
+- [ ] Analysis progress bar
 - [ ] Sort schemas on # of shared lowercase field names first
 - [ ] Bugfix: how is PROJECT schema derived from R_AWDS8?
 - [ ] (Optionally) disallow two schemas to be their own/only closest relatives
@@ -51,6 +64,7 @@ Then, run `script/analyze.sh` to create a staging environment. After it has fini
 - [X] Load graph data from API (instead of jade inject)
 - [X] Schema page queries schema API (instead of schema file)
 - [X] Visualize schema diff for each outgoing linked schema
+- [X] Visualize schema diff for each incoming linked schema
 - [ ] Create arrows indicating graph directionality
 - [ ] Set source data table height to partial window height
 - [ ] Color schema circles by number of attributes

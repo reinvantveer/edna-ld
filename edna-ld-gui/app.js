@@ -5,10 +5,15 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
+const app = express();
+const server = require('http').createServer(app);
+const io = require('socket.io')(server);
+
 const uiRoutes = require('./routes/ui');
 const apiRoutes = require('./routes/api');
+const socketIORoutes = require('./routes/socket.io');
 
-const app = express();
+socketIORoutes(io);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -55,4 +60,4 @@ app.use((err, req, res, next) => {
   });
 });
 
-module.exports = app;
+module.exports = { app, server };

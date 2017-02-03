@@ -1,0 +1,10 @@
+#!/usr/bin/nodejs
+
+const app = require('../app').app;
+const server = require('../app').server;
+
+app.set('port', process.env.PORT || 3000);
+
+const run = server.listen(app.get('port'), () => {
+  console.log(`Please point your browser to http://localhost:${run.address().port}`);
+});
