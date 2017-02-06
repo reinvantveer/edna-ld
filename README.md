@@ -5,9 +5,9 @@ A framework for analysing and transforming multi-schema (hundreds of them) CSV t
 clone and run `./install.sh` in the root dir
 
 # Usage
-First, convert all your favorite source files to CSV. There's a script in the `script` folder that allows converting from MapInfo Interchange Format (MIF) to GeoCSV, for example.
+First, convert all your favorite source files to CSV. There's a script in the `script` folder that allows converting from [MapInfo Interchange Format](https://en.wikipedia.org/wiki/MapInfo_Interchange_Format) (MIF) to [GeoCSV](http://giswiki.hsr.ch/GeoCSV), for example.
 
-Then, run `script/analyze.sh` to create a staging environment. After it has finished, you can open your browser and point it to http://localhost:3000. Here you can convert the data interactively.
+Then, run `script/server.sh` to start the environment. You can open your browser and point it to http://localhost:3000. Here you can stage and convert the data interactively.
 
 # Approach
 ## Research
@@ -15,6 +15,7 @@ Then, run `script/analyze.sh` to create a staging environment. After it has fini
 - [ ] Ontology alignment and evaluation initiative
 - [ ] ontology alignment tools
 - [ ] Cerdeira survey paper on matching tools
+- [ ] Shi F, Li J et al 2009: Actively learning ontology matching via user interaction
 - [ ] Hierarchy based on pure parents
 - [ ] Internal evaluation of different sorting/scoring algorithms
 
@@ -41,9 +42,9 @@ Then, run `script/analyze.sh` to create a staging environment. After it has fini
 - [X] Add file content hash to csv file metadata
 - [X] Create 10 nearest neighbour links for optional manual selection
 - [ ] Weighted edges rather than sorted
-- [ ] Kick off analysis through UI
-- [ ] Analysis reports to UI
-- [ ] Analysis progress bar
+- [X] Kick off analysis through UI
+- [X] Analysis reports to UI
+- [X] Analysis progress bar
 - [ ] Sort schemas on # of shared lowercase field names first
 - [ ] Bugfix: how is PROJECT schema derived from R_AWDS8?
 - [ ] (Optionally) disallow two schemas to be their own/only closest relatives

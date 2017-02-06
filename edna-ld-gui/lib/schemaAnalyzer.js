@@ -43,11 +43,14 @@ function csv2jsonSchema(filePath, collections) {
     });
 }
 
-function createSchemaHash(filePath, collections) {
+function createSchemaHash(filePath, collections, socket) {
   return new Promise((resolve, reject) => {
     csv2jsonSchema(filePath, collections)
       .then(schema => {
         const schemaJSON = JSON.stringify(schema);
+
+        socket.emit('processedFile', filePath);
+
         return resolve({
           files: [filePath],
           hash: crypto.createHash('md5')
@@ -145,33 +148,45 @@ function toXDotGraph(relatedMap) {
   });
 }
 
-function analyzeFolderRecursive(folder, fileTypeExtension, mongodb) {
-  return new Promise((resolve, reject) => {
-    const fileMap = [];
+/**
+ * Create an array of file paths from a given folder location
+ * @param folder the input folder to recursively search
+ * @param fileTypeExtension the file extension to filter on
+ * @returns {Array}
+ */
+function inventoryFiles(folder, fileTypeExtension) {
+  const fileMap = [];
 
+// TODO: test for folder existence
+  file.walkSync(folder, (startDir, dirs, fileNames) => {
+    const extensionLength = fileTypeExtension.length;
+    fileNames
+      .filter(fileName => fileName.slice(-extensionLength) === fileTypeExtension)
+      .forEach(fileName => {
+        console.log(`${startDir}/${fileName}`);
+        let filePath = `${startDir}/${fileName}`;
+        filePath = filePath.replace('//', '/');
+        fileMap.push(filePath);
+      });
+  });
+
+  return fileMap;
+}
+
+function analyzeFolderRecursive(folder, fileTypeExtension, mongodb, socket) {
+  return new Promise((resolve, reject) => {
     const collections = {
       schemaCollection: mongodb.collection('schemas'),
       fileCollection: mongodb.collection('files'),
       sourcedataCollection: mongodb.collection('sourcedata')
     };
 
-    // TODO: test for folder existence
-    file.walkSync(folder, (startDir, dirs, fileNames) => {
-      const extensionLength = fileTypeExtension.length;
-      fileNames
-        .filter(fileName => fileName.slice(-extensionLength) === fileTypeExtension)
-        .forEach(fileName => {
-          console.log(startDir + '/' + fileName);
-          let filePath = startDir + '/' + fileName;
-          filePath = filePath.replace('//', '/');
-          fileMap.push(filePath);
-        });
-    });
+    const fileMap = inventoryFiles(folder, fileTypeExtension);
 
-    console.log(fileMap.length + ' files for analysis.');
+    console.log(`${fileMap.length} files for analysis.`);
 
     H(fileMap)
-      .map(filePath => H(createSchemaHash(filePath, collections)))
+      .map(filePath => H(createSchemaHash(filePath, collections, socket)))
       .parallel(4)
       .errors(err => console.error(err))
       .toArray(hashes => {
@@ -190,6 +205,7 @@ function analyzeFolderRecursive(folder, fileTypeExtension, mongodb) {
 }
 
 module.exports = {
+  inventoryFiles,
   analyzeFolderRecursive,
   csv2jsonSchema,
   createSchemaHash,

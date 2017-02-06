@@ -1,13 +1,21 @@
 /**
  * Created by vagrant on 2/3/17.
  */
-'use strict';
 
-const schemaAnalyzer = require('csv-ld').schemaAnalyzer;
+const schemaAnalyzer = require('../lib/schemaAnalyzer');
 const MongoClient = require('mongodb').MongoClient;
 
 const dbUrl = 'mongodb://localhost:27017/edna-ld';
 let mongodb;
+
+function startAnalysis(assignment, db, socket) {
+  socket.emit('statusUpdate', 'starting analysis');
+
+  return schemaAnalyzer
+    .analyzeFolderRecursive(assignment.inputFolder, assignment.extension, db, socket)
+    .then(result => socket.emit('stagingResult', result.length))
+    .catch(err => socket.emit('error', err));
+}
 
 function setupAnalysisSocket(io) {
   MongoClient.connect(dbUrl)
@@ -15,13 +23,13 @@ function setupAnalysisSocket(io) {
       mongodb = db;
 
       io.on('connection', socket => {
-        socket.on('statusUpdate', msg => io.emit('statusUpdate', msg));
-
-        socket.on('startAnalysis', assignment => {
-          schemaAnalyzer.analyzeFolderRecursive(assignment.inputFolder, assignment.extension, db)
-            .then(result => io.emit('schemaResult', result))
-            .catch(err => io.emit('error', err));
+        socket.on('inventory', assignment => {
+          const fileMap = schemaAnalyzer
+            .inventoryFiles(assignment.inputFolder, assignment.extension);
+          socket.emit('inventoryResult', fileMap);
         });
+
+        socket.on('startStaging', assignment => startAnalysis(assignment, db, socket));
       });
     })
     .catch(err => {
