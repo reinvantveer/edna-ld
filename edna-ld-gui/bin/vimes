@@ -1,10 +1,17 @@
 #!/usr/bin/nodejs
 
+'use strict';
+
 const app = require('../app').app;
 const server = require('../app').server;
+const process = require('process');
 
 app.set('port', process.env.PORT || 3000);
 
-const run = server.listen(app.get('port'), () => {
-  console.log(`Please point your browser to http://localhost:${run.address().port}`);
+const run = server.listen(app.get('port'), (err) => {
+  if (err) {
+    console.error(`An error occurred: ${err}`);
+    return process.exit(-1);
+  }
+  return console.log(`Please point your browser to http://localhost:${run.address().port}`);
 });
