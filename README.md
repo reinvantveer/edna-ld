@@ -18,6 +18,7 @@ Then, run `script/server.sh` to start the environment. You can open your browser
 - [ ] Shi F, Li J et al 2009: Actively learning ontology matching via user interaction
 - [ ] Hierarchy based on pure parents
 - [ ] Internal evaluation of different sorting/scoring algorithms
+- [ ] Research data management plan
 
 ## Development environment & deployment
 - [X] create Vagrantfile with all requirements
@@ -41,10 +42,10 @@ Then, run `script/server.sh` to start the environment. You can open your browser
 - [X] Create schema API endpoint
 - [X] Add file content hash to csv file metadata
 - [X] Create 10 nearest neighbour links for optional manual selection
-- [ ] Weighted edges rather than sorted
 - [X] Kick off analysis through UI
 - [X] Analysis reports to UI
 - [X] Analysis progress bar
+- [ ] Weighted edges rather than sorted
 - [ ] Sort schemas on # of shared lowercase field names first
 - [ ] Bugfix: how is PROJECT schema derived from R_AWDS8?
 - [ ] (Optionally) disallow two schemas to be their own/only closest relatives
