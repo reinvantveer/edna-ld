@@ -48,14 +48,13 @@
 	 * Created by vagrant on 2/3/17.
 	 */
 
-	'use strict';
 
 	const io = __webpack_require__(1);
 	const $ = __webpack_require__(55);
 
 	const socket = io();
 
-	let processProgress = {
+	const processProgress = {
 	  total: 0,
 	  current: 0
 	};
@@ -100,15 +99,18 @@
 	socket.on('stagingResult', result => {
 	  $('#process').text('Done!');
 
+	  $('#processProgressBar').css('width', '100%')
+	    .text('100%');
+
 	  $('#messages')
 	    .append($('<li>')
 	      .text(`Files staged and ${result} schemas stored. You may proceed to the schema graph section.`));
 	});
 
-	socket.on('processedFile', filePath => {
+	socket.on('processedFile', () => {
 	  console.log(processProgress);
 	  processProgress.current += 1;
-	  const percentage = (processProgress.current / processProgress.total * 100).toFixed(2);
+	  const percentage = ((processProgress.current / processProgress.total) * 100).toFixed(2);
 	  $('#processProgressBar').css('width', `${percentage}%`)
 	    .text(`${percentage}%`);
 	});
