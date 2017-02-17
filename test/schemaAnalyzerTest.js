@@ -50,6 +50,38 @@ describe('The schema analyzer', () => {
           hash: 'ece9e8a91157824de7c5a9527c322ea9',
           closestRelatives: [],
           occurrences: 2,
+          duplication: {
+            '5019b418c592899cf2847f215ef72b9a': 1,
+            b8e9a9d81750bc833ab8a708e9317fe5: 1
+          },
+          schema: {
+            type: 'array',
+            items: {
+              type: 'object',
+              properties: {
+                column1: { type: 'string' },
+                column2: { type: 'string' }
+              }
+            }
+          }
+        }
+      ]))
+      .catch(err => { throw err; });
+  });
+
+  it('identifies duplicate files', () => {
+    return analyzer.analyzeFolderRecursive('test/mockups/duplicateFilesTest', '.csv', mongodb, socket)
+      .then(result => result.sort().should.deep.equal([
+        {
+          files: [
+            'test/mockups/duplicateFilesTest/duplicate1.csv',
+            'test/mockups/duplicateFilesTest/duplicate2.csv'
+          ],
+          _id: 'ece9e8a91157824de7c5a9527c322ea9',
+          hash: 'ece9e8a91157824de7c5a9527c322ea9',
+          closestRelatives: [],
+          occurrences: 2,
+          duplication: { b8e9a9d81750bc833ab8a708e9317fe5: 2 },
           schema: {
             type: 'array',
             items: {
@@ -76,6 +108,7 @@ describe('The schema analyzer', () => {
               files: ['test/mockups/subfoldertest/rd.csv'],
               closestRelatives: [],
               occurrences: 1,
+              duplication: { cf21bcc923a8bb0028d1ee132aebd4c9: 1 },
               schema: {
                 type: 'array',
                 items: {
@@ -92,6 +125,7 @@ describe('The schema analyzer', () => {
               files: ['test/mockups/subfoldertest/test.csv', 'test/mockups/subfoldertest/subfolder/test2.csv'],
               closestRelatives: [],
               occurrences: 2,
+              duplication: { b8e9a9d81750bc833ab8a708e9317fe5: 2 },
               schema: {
                 type: 'array',
                 items: {
