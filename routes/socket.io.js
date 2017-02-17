@@ -4,9 +4,9 @@
 
 const schemaAnalyzer = require('../lib/schemaAnalyzer');
 const MongoClient = require('mongodb').MongoClient;
+const co = require('co');
 
 const dbUrl = 'mongodb://localhost:27017/edna-ld';
-let mongodb;
 
 function startAnalysis(assignment, db, socket) {
   socket.emit('statusUpdate', 'starting analysis');
@@ -18,24 +18,18 @@ function startAnalysis(assignment, db, socket) {
 }
 
 function setupAnalysisSocket(io) {
-  MongoClient.connect(dbUrl)
-    .then(db => {
-      mongodb = db;
-
-      io.on('connection', socket => {
-        socket.on('inventory', assignment => {
-          const fileMap = schemaAnalyzer
-            .inventoryFiles(assignment.inputFolder, assignment.extension);
-          socket.emit('inventoryResult', fileMap);
-        });
-
-        socket.on('startStaging', assignment => startAnalysis(assignment, db, socket));
+  return co(function* connect() {
+    const mongodb = yield MongoClient.connect(dbUrl);
+    io.on('connection', socket => {
+      socket.on('inventory', assignment => {
+        const fileMap = schemaAnalyzer
+          .inventoryFiles(assignment.inputFolder, assignment.extension);
+        socket.emit('inventoryResult', fileMap);
       });
-    })
-    .catch(err => {
-      if (mongodb) mongodb.close();
-      console.error(err);
+
+      socket.on('startStaging', assignment => startAnalysis(assignment, mongodb, socket));
     });
+  });
 }
 
 module.exports = (io) => setupAnalysisSocket(io);
