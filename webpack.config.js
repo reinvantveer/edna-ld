@@ -3,12 +3,12 @@
  */
 module.exports = {
   entry: {
-    schemaApp: './edna-ld-gui/src/schemaApp.js',
-    sourcedataApp: './edna-ld-gui/src/sourcedataApp.js',
-    indexApp: './edna-ld-gui/src/indexApp.js'
+    schemaApp: './src/schemaApp.js',
+    sourcedataApp: './src/sourcedataApp.js',
+    indexApp: './src/indexApp.js'
   },
   output: {
-    path: './edna-ld-gui/public/js/',
+    path: './public/js/',
     filename: '[name].js'
   }
 };

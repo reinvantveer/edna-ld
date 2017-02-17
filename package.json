@@ -4,8 +4,8 @@
   "description": "A framework for analysing and transforming multi-schema (hundreds of them) CSV to Linked Data",
   "main": "app.js",
   "scripts": {
-    "start": "nodejs ./edna-ld-gui/bin/www",
-    "test": "istanbul cover _mocha -- --recursive -R spec edna-ld-gui/test"
+    "start": "nodejs ./bin/vimes",
+    "test": "istanbul cover _mocha -- --recursive -R spec"
   },
   "repository": {
     "type": "git",
@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/reinvantveer/edna-ld#readme",
   "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
     "eslint": "^3.11.1",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-import": "^2.2.0",
@@ -34,9 +36,10 @@
     "bunyan": "^1.8.5",
     "co": "^4.6.0",
     "cookie-parser": "~1.0.1",
-    "csv-ld": "reinvantveer/ld-transformer",
+    "csv": "^1.1.1",
     "d3": "^4.4.3",
     "debug": "~0.7.4",
+    "duration": "^0.2.0",
     "express": "~4.0.0",
     "fast-json-patch": "^1.1.4",
     "file": "^0.2.2",
