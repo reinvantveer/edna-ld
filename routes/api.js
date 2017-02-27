@@ -1,5 +1,3 @@
-'use strict';
-
 // Express setup
 const express = require('express');
 
@@ -28,7 +26,7 @@ function getOneFile(req, res, collections) {
         return res.status(404).json({ error: 'not found' });
       })
       .catch(err => {
-        console.log(err);
+        console.error(err);
         return res.json(err);
       });
   }
@@ -41,7 +39,7 @@ function getSourceDataForFile(req, res, collections) {
     return collections.sourcedataCollection.find({ filePath: req.query.filepath })
       .toArray((err, fileStats) => {
         if (err) {
-          console.log(err);
+          console.error(err);
           return res.json(err);
         }
         if (fileStats) return res.json(fileStats);

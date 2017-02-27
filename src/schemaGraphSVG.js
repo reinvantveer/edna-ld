@@ -2,18 +2,20 @@
  * Created by reinvantveer on 1/20/17.
  */
 
+/* global d3, graphData */
 const nodes = graphData.map(schema => {
   schema.id = schema.hash;
   return schema;
 });
 
 const edges = graphData.map(schema => {
-  return {
+  const edge = {
     id: `edge-${schema.hash}`,
     strength: 1 / schema.closestRelatives[0].patch.length,
     source: schema.hash,
     target: schema.closestRelatives[0].schemaHash
   };
+  return edge;
 });
 
 const svg = d3.select('svg');
@@ -64,6 +66,9 @@ const link = svg.append('g')
   .enter()
   .append('line')
   .attr('stroke-width', 5);
+
+link.append('title')
+  .text(d => d.id);
 
 const node = svg.append('g')
   .attr('class', 'nodes')

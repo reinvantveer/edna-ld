@@ -18,7 +18,7 @@ socketIORoutes(io)
   .then(() => {
     // view engine setup
     app.set('views', path.join(__dirname, 'views'));
-    app.set('view engine', 'jade');
+    app.set('view engine', 'pug');
 
     app.use(favicon());
     app.use(logger('dev'));
@@ -42,7 +42,7 @@ socketIORoutes(io)
     // development error handler
     // will print stacktrace
     if (app.get('env') === 'development') {
-      app.use((err, req, res, next) => {
+      app.use((err, req, res) => {
         res.status(err.status || 500);
         res.render('error', {
           message: err.message,
@@ -53,7 +53,7 @@ socketIORoutes(io)
 
     // production error handler
     // no stacktraces leaked to user
-    app.use((err, req, res, next) => {
+    app.use((err, req, res) => {
       res.status(err.status || 500);
       res.render('error', {
         message: err.message,
@@ -67,7 +67,7 @@ socketIORoutes(io)
       console.error('Please start a mongodb instance on the supplied host and port first.');
       return process.exit(-1);
     }
-    console.log(err.stack);
+    console.error(err.stack);
     return process.exit(-1);
   });
 

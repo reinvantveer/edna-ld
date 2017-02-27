@@ -13,6 +13,7 @@ const processProgress = {
   current: 0
 };
 
+/* global inputFolder, extension */
 function processButtonAction(event, text) {
   $('#process').off('click');
   $('#process').on('click', () => {
@@ -62,7 +63,7 @@ socket.on('stagingResult', result => {
 });
 
 socket.on('processedFile', () => {
-  console.log(processProgress);
+  // console.log(processProgress);
   processProgress.current += 1;
   const percentage = ((processProgress.current / processProgress.total) * 100).toFixed(2);
   $('#processProgressBar').css('width', `${percentage}%`)
