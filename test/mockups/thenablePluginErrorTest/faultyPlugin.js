@@ -1,5 +1,1 @@
-'use strict';
-
-module.exports = () => {
-  throw Error('Test error');
-};
+module.exports = () => { throw Error('Test error'); };
