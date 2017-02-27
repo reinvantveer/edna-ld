@@ -1,8 +1,7 @@
 /* global document */
 
-'use strict';
-
 const d3 = require('d3');
+const d3ScaleChromatic = require('d3-scale-chromatic');
 const $ = require('jquery');
 const xtend = require('xtend');
 
@@ -33,7 +32,7 @@ function drawNode(node) {
   if (node.hash === selectedNode) {
     context.fillStyle = '#75070a';
   } else {
-    context.fillStyle = '#75af96';
+    context.fillStyle = selectedNode.color;
   }
 
   context.beginPath();
@@ -59,13 +58,16 @@ function tick(edges, nodes) {
 }
 
 // Global colorScale for ranging the amount of duplication in files belonging to a schema
-let colorScale;
-
 $.get('/api/v1/schemas', (graphData, status) => {
   if (status !== 'success') return console.error(status);
 
-  const nodes = graphData.map(schema => xtend(schema, { id: schema.hash }));
-  colorScale = d3.scaleOrdinal().range(graphData.duplication).domain()
+  const color = d3.ordinalRange(d3ScaleChromatic.schemeOranges)
+    .domain()
+  const nodes = graphData.map(schema => xtend(schema, {
+    id: schema.hash,
+    color: color()
+  }));
+
 
   /* eslint arrow-body-style: ["error", "as-needed", { "requireReturnForObjectLiteral": true }]*/
   const edges = graphData.map(schema => {
@@ -188,4 +190,3 @@ $.get('/api/v1/schemas', (graphData, status) => {
       .on('drag', dragged)
       .on('end', dragended));
 });
-

@@ -49,10 +49,9 @@
 	 * Created by vagrant on 1/29/17.
 	 */
 
-	'use strict';
-
 	const $ = __webpack_require__(55);
 
+	/* eslint-env browser */
 	const appPath = window.location.href;
 
 	if (appPath.split('#')[1]) {
@@ -96,15 +95,15 @@
 	    const height = 'innerHeight' in window
 	      ? window.innerHeight
 	      : document.documentElement.offsetHeight;
-	    console.log(height);
+	    // console.log(height);
 	    $('#sourcedata').css(`max-height: ${height}`);
 
-	    $('#sourceDataTable').append('</tbody>');
+	    return $('#sourceDataTable').append('</tbody>');
 
 	    // $('#sourceDataTable').DataTable();
 	  });
 
-	  console.log(`requested file: ${appPath.split('#')[1]}`);
+	  // console.log(`requested file: ${appPath.split('#')[1]}`);
 	}
 
 
