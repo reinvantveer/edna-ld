@@ -80,7 +80,7 @@
 	  if (node.hash === selectedNode) {
 	    context.fillStyle = '#75070a';
 	  } else {
-	    context.fillStyle = '#75AF96';
+	    context.fillStyle = '#75af96';
 	  }
 
 	  context.beginPath();
@@ -105,10 +105,14 @@
 	  context.restore();
 	}
 
+	// Global colorScale for ranging the amount of duplication in files belonging to a schema
+	let colorScale;
+
 	$.get('/api/v1/schemas', (graphData, status) => {
 	  if (status !== 'success') return console.error(status);
 
 	  const nodes = graphData.map(schema => xtend(schema, { id: schema.hash }));
+	  colorScale = d3.scaleOrdinal().range(graphData.duplication).domain()
 
 	  /* eslint arrow-body-style: ["error", "as-needed", { "requireReturnForObjectLiteral": true }]*/
 	  const edges = graphData.map(schema => {

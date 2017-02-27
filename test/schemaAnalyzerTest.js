@@ -2,8 +2,6 @@
  * Created by reinvantveer on 12/5/16.
  */
 
-'use strict';
-
 const analyzer = require('../lib/schemaAnalyzer');
 const chai = require('chai');
 
@@ -11,7 +9,13 @@ chai.should();
 
 // MongoDb collections API stub
 const storageFunctions = {
-  insertOne: dummy => dummy === 'error' ? Promise.reject('Test error') : Promise.resolve('OK'),
+  insertOne: dummy => {
+    if (dummy === 'error') {
+      Promise.reject('Test error');
+    } else {
+      Promise.resolve('OK');
+    }
+  },
   insertMany: () => Promise.resolve('OK'),
   updateOne: () => Promise.resolve('OK')
 };
@@ -38,8 +42,8 @@ describe('The schema analyzer', () => {
     mongodb = { collection: collection => collections[collection] };
   });
 
-  it('creates identical schemas for two files, one file missing one row value', () => {
-    return analyzer.analyzeFolderRecursive('test/mockups/sameSchemaTest', '.csv', mongodb, socket)
+  it('creates identical schemas for two files, one file missing one row value', () =>
+    analyzer.analyzeFolderRecursive('test/mockups/sameSchemaTest', '.csv', mongodb, socket)
       .then(result => result.sort().should.deep.equal([
         {
           files: [
@@ -51,8 +55,8 @@ describe('The schema analyzer', () => {
           closestRelatives: [],
           occurrences: 2,
           duplication: {
-            '5019b418c592899cf2847f215ef72b9a': 1,
-            b8e9a9d81750bc833ab8a708e9317fe5: 1
+            '6007c050b1170e62f2a3901dc1994fa5': 1,
+            '97a599f0364f75d31aa9e0deb8a0d510': 1
           },
           schema: {
             type: 'array',
@@ -66,22 +70,24 @@ describe('The schema analyzer', () => {
           }
         }
       ]))
-      .catch(err => { throw err; });
-  });
+      .catch(err => { throw err; })
+  );
 
-  it('identifies duplicate files', () => {
-    return analyzer.analyzeFolderRecursive('test/mockups/duplicateFilesTest', '.csv', mongodb, socket)
+  it('groups files with the same information in a different order', () =>
+    analyzer.analyzeFolderRecursive('test/mockups/inverseOrderTest', '.csv', mongodb, socket)
       .then(result => result.sort().should.deep.equal([
         {
           files: [
-            'test/mockups/duplicateFilesTest/duplicate1.csv',
-            'test/mockups/duplicateFilesTest/duplicate2.csv'
+            'test/mockups/inverseOrderTest/inverseTest.csv',
+            'test/mockups/inverseOrderTest/test.csv'
           ],
           _id: 'ece9e8a91157824de7c5a9527c322ea9',
           hash: 'ece9e8a91157824de7c5a9527c322ea9',
           closestRelatives: [],
           occurrences: 2,
-          duplication: { b8e9a9d81750bc833ab8a708e9317fe5: 2 },
+          duplication: {
+            '97a599f0364f75d31aa9e0deb8a0d510': 2,
+          },
           schema: {
             type: 'array',
             items: {
@@ -94,21 +100,49 @@ describe('The schema analyzer', () => {
           }
         }
       ]))
-      .catch(err => { throw err; });
-  });
+      .catch(err => { throw err; })
+  );
+
+  it('identifies duplicate files', () =>
+    analyzer.analyzeFolderRecursive('test/mockups/duplicateFilesTest', '.csv', mongodb, socket)
+      .then(result => result.sort().should.deep.equal([
+        {
+          files: [
+            'test/mockups/duplicateFilesTest/duplicate1.csv',
+            'test/mockups/duplicateFilesTest/duplicate2.csv'
+          ],
+          _id: 'ece9e8a91157824de7c5a9527c322ea9',
+          hash: 'ece9e8a91157824de7c5a9527c322ea9',
+          closestRelatives: [],
+          occurrences: 2,
+          duplication: { '97a599f0364f75d31aa9e0deb8a0d510': 2 },
+          schema: {
+            type: 'array',
+            items: {
+              type: 'object',
+              properties: {
+                column1: { type: 'string' },
+                column2: { type: 'string' }
+              }
+            }
+          }
+        }
+      ]))
+      .catch(err => { throw err; })
+  );
 
   describe('schema analysis', () => {
-    it('summarizes the schemas of a particular folder and its subfolders', () => {
-      return analyzer.analyzeFolderRecursive('test/mockups/subfoldertest/', 'csv', mongodb, socket)
-        .then(summary => {
-          return summary.sort().should.deep.equal([
+    it('summarizes the schemas of a particular folder and its subfolders', () =>
+      analyzer.analyzeFolderRecursive('test/mockups/subfoldertest/', 'csv', mongodb, socket)
+        .then(summary =>
+          summary.sort().should.deep.equal([
             {
               _id: 'ef4e1166fc061ac5c3ce0ee63ec4f518',
               hash: 'ef4e1166fc061ac5c3ce0ee63ec4f518',
               files: ['test/mockups/subfoldertest/rd.csv'],
               closestRelatives: [],
               occurrences: 1,
-              duplication: { cf21bcc923a8bb0028d1ee132aebd4c9: 1 },
+              duplication: { '2236ff79eb11d4ad7d12d1dc4a5acbaf': 1 },
               schema: {
                 type: 'array',
                 items: {
@@ -125,7 +159,7 @@ describe('The schema analyzer', () => {
               files: ['test/mockups/subfoldertest/test.csv', 'test/mockups/subfoldertest/subfolder/test2.csv'],
               closestRelatives: [],
               occurrences: 2,
-              duplication: { b8e9a9d81750bc833ab8a708e9317fe5: 2 },
+              duplication: { '97a599f0364f75d31aa9e0deb8a0d510': 2 },
               schema: {
                 type: 'array',
                 items: {
@@ -137,125 +171,8 @@ describe('The schema analyzer', () => {
                 }
               }
             }
-          ]);
-        });
-    });
-
-    describe('schema diff sorter', () => {
-      it('prefers few diffs over many diffs', () => {
-        const diffA = {
-          patch: [
-            { op: 'remove', path: '/items/properties/bang' },
-            { op: 'add', path: '/items/properties/column1', value: { type: 'string' } },
-            { op: 'add', path: '/items/properties/column2', value: { type: 'string' } }
-          ]
-        };
-
-        const diffB = {
-          patch: [
-            { op: 'remove', path: '/items/properties/bang' },
-            { op: 'add', path: '/items/properties/column1', value: { type: 'string' } }
-          ]
-        };
-
-        return analyzer.schemaDiffSorter(diffA, diffB)
-          .should.equal(1);
-      });
-
-      it('prefers few diffs over many diffs', () => {
-        const diffA = {
-          patch: [
-            { op: 'remove', path: '/items/properties/bang' },
-            { op: 'add', path: '/items/properties/column1', value: { type: 'string' } }
-          ]
-        };
-
-        const diffB = {
-          patch: [
-            { op: 'remove', path: '/items/properties/bang' },
-            { op: 'add', path: '/items/properties/column1', value: { type: 'string' } },
-            { op: 'add', path: '/items/properties/column2', value: { type: 'string' } }
-          ]
-        };
-
-        return analyzer.schemaDiffSorter(diffA, diffB)
-          .should.equal(-1);
-      });
-
-      it('prefers add diffs over replace diffs', () => {
-        const diffA = {
-          patch: [
-            { op: 'add', path: '/items/properties/column1', value: { type: 'string' } },
-            { op: 'add', path: '/items/properties/column2', value: { type: 'string' } }
-          ]
-        };
-
-        const diffB = {
-          patch: [
-            { op: 'remove', path: '/items/properties/bang' },
-            { op: 'add', path: '/items/properties/column1', value: { type: 'string' } }
-          ]
-        };
-
-        return analyzer.schemaDiffSorter(diffA, diffB)
-          .should.equal(-1);
-      });
-
-      it('prefers add diffs over replace diffs', () => {
-        const diffA = {
-          patch: [
-            { op: 'remove', path: '/items/properties/bang' },
-            { op: 'add', path: '/items/properties/column1', value: { type: 'string' } }
-          ]
-        };
-
-        const diffB = {
-          patch: [
-            { op: 'add', path: '/items/properties/column1', value: { type: 'string' } },
-            { op: 'add', path: '/items/properties/column2', value: { type: 'string' } }
-          ]
-        };
-
-        return analyzer.schemaDiffSorter(diffA, diffB)
-          .should.equal(1);
-      });
-
-      it('prefers an remove and add diff over just a remove diff', () => {
-        const diffA = {
-          patch: [
-            { op: 'remove', path: '/items/properties/bang' },
-          ]
-        };
-
-        const diffB = {
-          patch: [
-            { op: 'remove', path: '/items/properties/column1', value: { type: 'string' } },
-            { op: 'add', path: '/items/properties/column2', value: { type: 'string' } }
-          ]
-        };
-
-        return analyzer.schemaDiffSorter(diffA, diffB)
-          .should.equal(1);
-      });
-
-      it('prefers an remove and add diff over just a remove diff', () => {
-        const diffA = {
-          patch: [
-            { op: 'remove', path: '/items/properties/column1', value: { type: 'string' } },
-            { op: 'remove', path: '/items/properties/column2', value: { type: 'string' } },
-            { op: 'add', path: '/items/properties/column2', value: { type: 'string' } }
-          ]
-        };
-
-        const diffB = {
-          patch: [
-            { op: 'remove', path: '/items/properties/bang' },
-          ]
-        };
-
-        return analyzer.schemaDiffSorter(diffA, diffB)
-          .should.equal(-1);
-      });
-    });
+          ])
+        )
+    );
   });
 });

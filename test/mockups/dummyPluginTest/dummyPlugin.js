@@ -1,5 +1,5 @@
-'use strict';
-
-module.exports = (somevar) => {
-  return new Promise((resolve, reject) => somevar ? resolve(true) : reject(false));
-};
+module.exports = (somevar) =>
+  new Promise((resolve, reject) => {
+    if (somevar) return resolve(true);
+    return reject(false);
+  });

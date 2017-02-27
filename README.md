@@ -45,8 +45,10 @@ Then, run `script/server.sh` to start the environment. You can open your browser
 - [X] Kick off analysis through UI
 - [X] Analysis reports to UI
 - [X] Analysis progress bar
-- [ ] Weighted edges rather than sorted
-- [ ] Sort schemas on # of shared lowercase field names first
+- [X] Sort source fields before analysis
+- [X] Lowercase source records before analysis
+- [ ] Sort schemas on # of shared field names first
+- [ ] Weighted edges for sorting
 - [ ] Bugfix: how is PROJECT schema derived from R_AWDS8?
 - [ ] (Optionally) disallow two schemas to be their own/only closest relatives
 - [ ] Make schema comparison optionally case insensitive

@@ -2,8 +2,6 @@
  * Created by vagrant on 2/17/17.
  */
 
-'use strict';
-
 const upsertMany = require('../lib/mongoWriter').upsertMany;
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');

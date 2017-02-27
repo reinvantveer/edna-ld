@@ -1,17 +1,16 @@
 /**
- * Created by vagrant on 2/16/17.
+ * Created by reinvantveer on 2/16/17.
  */
 
+const analyzer = require('../lib/csvProcessor');
 const chai = require('chai');
 
 chai.should();
 
-const analyzer = require('../lib/csvProcessor');
-
 /* eslint-env mocha */
-describe('The csv processor', function() {
-  it('generates a json schema for the csv', function (done) {
-    analyzer('test/mockups/test.csv', function (err, result) {
+describe('The csv processor', () => {
+  it('generates a json schema for the csv', done => {
+    analyzer('test/mockups/test.csv', (err, result) => {
       if (err) return done(err);
       result.schemaData.schema.should.deep.equal({
         $schema: 'http://json-schema.org/draft-04/schema#',
@@ -28,9 +27,9 @@ describe('The csv processor', function() {
     });
   });
 
-  describe('file hashing', function() {
-    it('generates data and metadata for a test csv', function (done) {
-      analyzer('./test/mockups/test.csv', function (err, result) {
+  describe('file hashing', () => {
+    it('generates data and metadata for a test csv', done => {
+      analyzer('./test/mockups/test.csv', (err, result) => {
         if (err) return done(err);
         result.schemaData.hash.should.deep.equal('ece9e8a91157824de7c5a9527c322ea9');
         result.schemaData.files.should.deep.equal(['./test/mockups/test.csv']);
@@ -49,8 +48,8 @@ describe('The csv processor', function() {
       });
     });
 
-    it('generates a hash of an identical file', function (done) {
-      analyzer('test/mockups/subfoldertest/subfolder/test2.csv', function(err, result) {
+    it('generates a hash of an identical file', done => {
+      analyzer('test/mockups/subfoldertest/subfolder/test2.csv', (err, result) => {
         if (err) return done(err);
         result.schemaData.hash.should.deep.equal('ece9e8a91157824de7c5a9527c322ea9');
         result.schemaData.files.should.deep.equal(['test/mockups/subfoldertest/subfolder/test2.csv']);
