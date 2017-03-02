@@ -2,32 +2,75 @@ extends layout
 
 block content
   .jumbotron
-    h1 Bulk schema analysis and file mapping
-    p This application allows you to do
-      ul
-        li schema diff visualisation
-        li schema derivation
-        li file splitting
-        li file mapping to linked data
-    p You have selected the path !{path}
-    p The file filter is on the file extension !{extension}
-    a.btn.btn-primary.btn-lg(id='process', role='button') Start file inventory
-    br
-    br
-    .progress
-      .progress-bar(id='processProgressBar' role='progressbar', aria-valuenow='0', aria-valuemin='0', aria-valuemax='100', style='width: 0%;')
-        | 0%
-    div
-      ul(id='messages')
-    p
-      p Go to other sections (see also top menu)
-      a.btn.btn-primary.btn-lg(href='schema', role='button') Schema analysis
-      br
-      a.btn.btn-primary.btn-lg(href='mapping', role='button') Data mapping
-      br
-      a.btn.btn-primary.btn-lg(href='sourcedata', role='button') Source files and data
-      br
-      a.btn.btn-primary.btn-lg(href='targetdata', role='button') Mapped data
+    div(style='padding: 10px')
+      h1 Bulk schema analysis and file mapping
+      p This application allows you to do
+        ul
+          li schema diff visualisation
+          li schema derivation
+          li file splitting
+          li file mapping to linked data
+      p You have selected the path !{path}
+      p The file filter is on the file extension !{extension}
+      form
+        div(style='padding: 10px')
+          a.btn.btn-primary.btn-lg(id='process', role='button') Start file inventory
+        div(style='padding: 10px')
+          .progress
+            .progress-bar(id='processProgressBar' role='progressbar', aria-valuenow='0', aria-valuemin='0', aria-valuemax='100', style='width: 0%;')
+              | 0%
+        .row
+          .col-lg-3
+            div(style='float: left;')
+              p Preserve schema data
+              .input-group
+                span.input-group-addon
+                  input(name='preserve-schema-data' id='schema-dry-run' type='radio', aria-label='Dry run' value='dry-run' style='float:left;')
+                  label(for='schema-dry-run') Dry run, preserve data
+                  br
+                  input(name='preserve-schema-data' id='schema-overwrite' type='radio', aria-label='Overwrite' value='overwrite' style='float:left;' checked='checked')
+                  label(for='schema-overwrite') Overwrite, keep unaffected data
+                  br
+                  input(name='preserve-schema-data' id='schema-wipe' type='radio', aria-label='Wipe' value='overwrite' style='float:left;')
+                  label(for='schema-wipe') Wipe and fresh ingest
+          .col-lg-3
+            div(style='float: left;')
+              p Preserve source data
+              .input-group
+                span.input-group-addon
+                  input(name='preserve-source-data' id='source-dry-run' type='radio', aria-label='Dry run' value='dry-run' style='float:left;')
+                  label(for='source-dry-run') Dry run, preserve data
+                  br
+                  input(name='preserve-source-data' id='source-overwrite' type='radio', aria-label='Overwrite' value='overwrite' style='float:left;' checked='checked')
+                  label(for='source-overwrite') Overwrite, keep unaffected data
+                  br
+                  input(name='preserve-source-data' id='source-wipe' type='radio', aria-label='Wipe' value='overwrite' style='float:left;')
+                  label(for='source-wipe') Wipe and fresh ingest
+          .col-lg-3
+            div(style='float: left;')
+              p Preserve mappings
+              .input-group
+                span.input-group-addon
+                  input(name='preserve-mapping-data' id='mapping-dry-run' type='radio', aria-label='Dry run' value='dry-run' style='float:left;')
+                  label(for='mapping-dry-run') Dry run, preserve data
+                  br
+                  input(name='preserve-mapping-data' id='mapping-overwrite' type='radio', aria-label='Overwrite' value='overwrite' style='float:left;' checked='checked')
+                  label(for='mapping-overwrite') Overwrite, keep unaffected data
+                  br
+                  input(name='preserve-mapping-data' id='mapping-wipe' type='radio', aria-label='Wipe' value='overwrite' style='float:left;')
+                  label(for='mapping-wipe') Wipe and fresh ingest
+      div
+        ul(id='messages')
+      p
+        p Go to other sections (see also top menu)
+        div(style='padding: 10px')
+          a.btn.btn-primary.btn-lg(href='schema', role='button' style='padding: 10px') Schema analysis
+        div(style='padding: 10px')
+          a.btn.btn-primary.btn-lg(href='mapping', role='button' style='padding: 10px') Data mapping
+        div(style='padding: 10px')
+          a.btn.btn-primary.btn-lg(href='sourcedata', role='button' style='padding: 10px') Source files and data
+        div(style='padding: 10px')
+          a.btn.btn-primary.btn-lg(href='targetdata', role='button' style='padding: 10px') Mapped data
   script.
     var inputFolder = '!{path}';
     var extension = '!{extension}';
