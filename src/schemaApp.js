@@ -30,9 +30,9 @@ function drawLink(link) {
  */
 function drawNode(node) {
   if (node.hash === selectedNode) {
-    context.fillStyle = '#75070a';
+    context.fillStyle = 'blue';
   } else {
-    context.fillStyle = selectedNode.color;
+    context.fillStyle = node.color;
   }
 
   context.beginPath();
@@ -61,12 +61,14 @@ function tick(edges, nodes) {
 $.get('/api/v1/schemas', (graphData, status) => {
   if (status !== 'success') return console.error(status);
 
-  const color = d3.ordinalRange(d3ScaleChromatic.schemeOranges)
-    .domain()
-  const nodes = graphData.map(schema => xtend(schema, {
-    id: schema.hash,
-    color: color()
-  }));
+  const nodes = graphData.map(schema => {
+    const colorOffset = Object.keys(schema.duplication).length / schema.occurrences;
+    const color = d3ScaleChromatic.interpolateOranges(colorOffset);
+    return xtend(schema, {
+      id: schema.hash,
+      color
+    });
+  });
 
 
   /* eslint arrow-body-style: ["error", "as-needed", { "requireReturnForObjectLiteral": true }]*/
@@ -136,7 +138,7 @@ $.get('/api/v1/schemas', (graphData, status) => {
     $('#diff')
       .empty();
     subject.closestRelatives.forEach(relative => {
-      $('#diff').append(`<a id="${relative.schemaHash}" href="#">${relative.schemaHash}</a>`);
+      $('#diff').append(`<a id="${relative.schemaHash}" href="#">${relative.schemaHash}</a><br />`);
 
       // Create related parent click behaviour
       $(`#${relative.schemaHash}`)
