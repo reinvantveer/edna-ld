@@ -9,9 +9,11 @@ block content
   div(style='margin-left:70%')
     h2 Schema
     span(id='hashText' class='glyphicon glyphicon-tag')
+      b Hash
     br
     br
     a(href='#files' id='occurrences' data-toggle='collapse' class='glyphicon glyphicon-file')
+      b files
     div(id='files' style='height: auto !important' class='collapse')
     br
     br
@@ -21,7 +23,7 @@ block content
     a(href='#diff' class='glyphicon glyphicon-retweet' data-toggle='collapse')
     =" "
     a(href='#diff' class='glyphicon glyphicon-log-out' data-toggle='collapse')
-    =" "
+    b  Outgoing diff
     i Click icon to expand/collapse
     div(id='diff' class='collapse')
     br
@@ -29,7 +31,7 @@ block content
     a(href='#diff' class='glyphicon glyphicon-retweet' data-toggle='collapse')
     =" "
     a(href='#diffIncoming' class='glyphicon glyphicon-log-in' data-toggle='collapse')
-    =" "
+    b  Incoming diff
     i Click icon to expand/collapse
     div(id='diffIncoming' class='collapse')
     br

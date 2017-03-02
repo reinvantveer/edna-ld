@@ -48,12 +48,13 @@ Then, run `script/server.sh` to start the environment. You can open your browser
 - [X] Sort source fields before analysis
 - [X] Lowercase source records before analysis
 - [X] Sort schemas on # of shared field names first
-- [ ] Weighted edges for sorting
+- [X] Weighted edges for sorting
 - [ ] Bugfix: how is PROJECT schema derived from R_AWDS8?
-- [ ] (Optionally) disallow two schemas to be their own/only closest relatives
-- [ ] Make schema comparison optionally case insensitive
+- [ ] (Optionally) disallow circular relatives
+- [X] Make schema comparison case insensitive
 - [ ] Parameterize schema diff sorting
-- [ ] Optionally store data in mongodb (default false)
+- [ ] Optionally overwrite source data in mongodb (default true)
+- [ ] Optionally overwrite schema data in mongodb (default true)
 - [ ] Bulk upsert source data
 
 ## Visualization
