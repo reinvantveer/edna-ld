@@ -5,8 +5,15 @@ import json
 
 class CSVparser:
 
+    @staticmethod
     def to_json(filepath):
         with open(filepath) as file:
-            dialect = csv.Sniffer().sniff(file.read(1024))
+            try:
+                dialect = csv.Sniffer().sniff(file.read(1024))
+            except:
+                raise ValueError(('Can\'t return JSON from empty or invalid csv file %s' % filepath))
             frame = pd.read_csv(filepath, quotechar=dialect.quotechar, delimiter=dialect.delimiter)
-        return json.dumps(frame.to_dict(orient='record'), sort_keys=True)
+            jsondata = json.dumps(frame.to_dict(orient='record'), sort_keys=True)
+            if jsondata == '[]':
+                raise ValueError(('Can\'t return JSON from invalid csv file %s' % filepath))
+            return jsondata

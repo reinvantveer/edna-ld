@@ -2,7 +2,7 @@
 A framework for analysing and transforming multi-schema (hundreds of them) CSV to Linked Data
 
 # Installation
-clone and run `./install.sh` in the root dir
+clone and run `script/install.sh` in the root dir
 
 # Usage
 First, convert all your favorite source files to CSV. There's a script in the `script` folder that allows converting from [MapInfo Interchange Format](https://en.wikipedia.org/wiki/MapInfo_Interchange_Format) (MIF) to [GeoCSV](http://giswiki.hsr.ch/GeoCSV), for example.

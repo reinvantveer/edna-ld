@@ -9,7 +9,7 @@ parentdir = os.path.dirname(currentdir)
 sys.path.insert(0, parentdir)
 
 
-class TestCSVparser(unittest.TestCase):
+class TestCsvToJson(unittest.TestCase):
     def test_simple(self):
         data = CSVparser.to_json(filepath=currentdir + '/mockups/test_simple.csv')
         self.assertEqual(data, '[{"column1": "data1", "column2": "data2"}, {"column1": "data3", "column2": "data4"}]')
@@ -29,6 +29,14 @@ class TestCSVparser(unittest.TestCase):
     def test_single_quotes(self):
         data = CSVparser.to_json(filepath=currentdir + '/mockups/test_single_quotes.csv')
         self.assertEqual(data, '[{"column1": "data1", "num": 1}, {"column1": "data3", "num": 2}]')
+
+    def test_no_csv(self):
+        with self.assertRaisesRegex(ValueError, 'invalid csv'):
+            CSVparser.to_json(filepath=currentdir + '/mockups/test_no_csv.txt')
+
+    def test_empty_csv(self):
+        with self.assertRaisesRegex(ValueError, 'empty or invalid'):
+            CSVparser.to_json(filepath=currentdir + '/mockups/empty.csv')
 
 
 def main():
