@@ -13,6 +13,7 @@ import lib.FileStatter as FileStatter
 import lib.CSVparser as CSVparser
 import lib.MIFparser as MIFparser
 import lib.SchemaGenerator as SchemaGenerator
+import lib.ProgressBar as ProgressBar
 
 if sys.version_info[0] < 3:
     raise RuntimeError("You're using Python 2, this script requires version 3.")
@@ -62,8 +63,13 @@ def run(file_path):
     file_list = DirLister.get_file_list_recursive(file_path)
     logging.info('Processing %d files from %s' % (len(file_list), file_path))
 
+    file_counter = 0
+
     for file in file_list:
-        # Store the file stats and data
+        file_counter += 1
+        ProgressBar.update_progress(file_counter / len(file_list))
+
+        # get the file stats
         document = {
             'stats': FileStatter.stats(file),
             'filePath': file,
