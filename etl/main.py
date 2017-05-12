@@ -8,11 +8,11 @@ import yaml
 from pymongo import MongoClient
 from pymongo.errors import DuplicateKeyError
 
-from etl.lib.DirLister import DirLister
-from etl.lib.FileStatter import FileStatter
-from etl.lib.CSVparser import CSVparser
-from etl.lib.MIFparser import MIFparser
-from etl.lib.SchemaGenerator import SchemaGenerator
+import lib.DirLister as DirLister
+import lib.FileStatter as FileStatter
+import lib.CSVparser as CSVparser
+import lib.MIFparser as MIFparser
+import lib.SchemaGenerator as SchemaGenerator
 
 if sys.version_info[0] < 3:
     raise RuntimeError("You're using Python 2, this script requires version 3.")
