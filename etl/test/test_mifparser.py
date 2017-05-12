@@ -1,7 +1,9 @@
 import inspect
-import os
 import unittest
-import etl.MIFparser as MIFparser
+
+import os
+
+import etl.lib.MIFparser as MIFparser
 
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 

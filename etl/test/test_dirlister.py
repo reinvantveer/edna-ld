@@ -1,20 +1,19 @@
 import inspect
-import os
-import sys
 import unittest
-import etl.DirLister as DirLister
+import os
 
-currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-parentdir = os.path.dirname(currentdir)
-sys.path.insert(0, parentdir)
+import etl.lib.DirLister as DirLister
+
+current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parent_dir = os.path.dirname(current_dir)
 
 
 class TestGetDirList(unittest.TestCase):
     def test_get_file_list_recursive(self):
-        dir_list = DirLister.get_file_list_recursive(os.path.join(currentdir, 'mockups', 'mif'))
+        dir_list = DirLister.get_file_list_recursive(os.path.join(current_dir, 'mockups', 'mif'))
         self.assertEqual(sorted(dir_list), [
-            os.path.join(currentdir, 'mockups', 'mif', 'test.mid'),
-            os.path.join(currentdir, 'mockups', 'mif', 'test.mif')
+            os.path.join(current_dir, 'mockups', 'mif', 'test.mid'),
+            os.path.join(current_dir, 'mockups', 'mif', 'test.mif')
         ])
 
 

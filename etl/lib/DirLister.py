@@ -1,5 +1,6 @@
 import os
 
+
 class DirLister:
     @staticmethod
     def get_file_list_recursive(path):
