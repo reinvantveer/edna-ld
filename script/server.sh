@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
-mongod --fork --logpath ./mongodb.log --logappend
+set -e
+docker-compose up -d
 webpack
 nodemon ./bin/vimes -- -i ~/surfdrive/DANS/target/flattened/

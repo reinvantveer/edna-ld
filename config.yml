@@ -1,0 +1,13 @@
+mongo:
+  host: localhost
+  port: 27017
+  database: edna
+  fileCollection: files
+  schemaCollection: schemas
+  sourcedataCollection: sourcedata
+
+logging:
+  loglevel: DEBUG # One of the familiar values of DEBUG, INFO, WARN, WARNING, ERROR, FATAL, CRITICAL
+  # The files to log to
+  debug: logfile.log
+  error: error.log

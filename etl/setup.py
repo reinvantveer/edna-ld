@@ -7,7 +7,7 @@ setup(name='csv2mongodb',
     author='Rein van t Veer',
     author_email='r.h.vant.veer@vu.nl',
     license='MIT',
-    packages=['lib'],
+    packages=['etl'],
     install_requires=[
         'pandas',
         'pymongo',

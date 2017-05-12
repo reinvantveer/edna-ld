@@ -1,0 +1,21 @@
+version: "2"
+
+services:
+  mongo:
+    image: mongo
+    volumes:
+      - mongodata:/data/db
+    networks:
+      - default
+    ports:
+      - "27017:27017"
+
+networks:
+  default:
+    driver: bridge
+
+volumes:
+  mongodata:
+    driver: local
+  sourcedata:
+    driver: local
