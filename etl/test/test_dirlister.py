@@ -1,11 +1,13 @@
 import inspect
 import unittest
 import os
+import sys
 
-import etl.lib.DirLister as DirLister
+sys.path.insert(0, '..')
+
+from lib import DirLister
 
 current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-parent_dir = os.path.dirname(current_dir)
 
 
 class TestGetDirList(unittest.TestCase):

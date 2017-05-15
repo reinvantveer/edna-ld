@@ -1,9 +1,11 @@
 import inspect
 import unittest
-
 import os
+import sys
 
-from ..lib.MIFparser import MIFparser
+sys.path.insert(0, '..')
+
+from lib import MIFparser
 
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 

@@ -1,8 +1,11 @@
 import inspect
 import unittest
 import os
+import sys
 
-import etl.lib.FileStatter as FileStatter
+sys.path.insert(0, '..')
+
+from lib import FileStatter
 
 current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 
