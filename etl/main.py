@@ -96,17 +96,22 @@ def run(file_path):
                 continue
 
         # Generate the schema and try to ingest it
-        schema_data = SchemaGenerator.generate_schema(data)
+        try:
+            schema_data = SchemaGenerator.generate_schema(data)
+        except Exception as e:
+            logging.error('Schema error on file %s: %s' % (file, e))
+            continue
 
+        schema_hash = FileStatter.sha1(json.dumps(schema_data))
         schema = {
-            '_id': FileStatter.sha1(json.dumps(schema_data)),
+            '_id': schema_hash,
             'schemadata': schema_data,
         }
 
         try:
             schema_col.insert_one(schema)
         except DuplicateKeyError:
-            logging.debug('Schema %s was previously processed, skipping' % schema)
+            logging.debug('Schema %s was previously processed, skipping' % schema_hash)
         except Exception as e:
             logging.error(e)
             # if the schema loading doesn't work out, just log the error and skip the file

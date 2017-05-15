@@ -1,6 +1,7 @@
 from setuptools import setup
 
-setup(name='csv2mongodb',
+setup(
+    name='csv2mongodb',
     version='0.1',
     description='Python mongodb ETL for CSV with enhanced data parsing',
     url='http://github.com/reinvantveer/edna-ld',
@@ -13,7 +14,9 @@ setup(name='csv2mongodb',
         'pymongo',
         'GDAL',
         'PyYAML',
+        'GenSON',
     ],
     test_suite='nose.collector',
     tests_require=['nose'],
-    zip_safe=False)
+    zip_safe=False
+)
