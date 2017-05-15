@@ -11,7 +11,13 @@ class CSVparser:
                 dialect = csv.Sniffer().sniff(file.read(1024))
             except:
                 raise ValueError('Can\'t return dictionary from empty or invalid csv file %s' % filepath)
-            frame = pd.read_csv(filepath, quotechar=dialect.quotechar, delimiter=dialect.delimiter)
+            frame = pd.read_csv(
+                filepath,
+                quotechar=dialect.quotechar,
+                delimiter=dialect.delimiter,
+                encoding='latin_1',
+                parse_dates=True,
+            )
             dict = frame.to_dict(orient='record')
             if not dict:
                 raise ValueError('Can\'t return dictionary from invalid csv file %s' % filepath)

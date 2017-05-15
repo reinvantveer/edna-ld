@@ -91,7 +91,7 @@ def run(file_path):
             try:
                 data = CSVparser.to_dict(file)
             except ValueError as e:
-                logging.error(e)
+                logging.error('CSV parsing error on file %s: %s' % (file, e))
                 # if the data loading doesn't work out, just log the error and skip the file
                 continue
 
