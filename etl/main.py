@@ -111,14 +111,29 @@ def run(file_path):
         try:
             schema_col.insert_one(schema)
         except DuplicateKeyError:
-            logging.debug('Schema %s was previously processed, skipping' % schema_hash)
+            logging.debug('Schema %s was previously processed' % schema_hash)
         except Exception as e:
             logging.error(e)
             # if the schema loading doesn't work out, just log the error and skip the file
             continue
 
-        # Finalize the file document with the loaded data and the schema reference
-        document['data'] = data
+        # Store the source data
+        source_data_doc_sha1 = FileStatter.sha1(data)
+        source_data_doc = {
+            '_id': source_data_doc_sha1,
+            'data': data
+        }
+
+        try:
+            source_data_col.insert_one(document=source_data_doc)
+        except DuplicateKeyError:
+            logging.debug('Sourcedata with sha1 %s was previously processed' % file)
+        except Exception as e:
+            logging.error(e)
+            continue
+
+        # Finalize the file document with the data reference and the schema reference
+        document['data'] = source_data_doc_sha1
         document['schema'] = schema['_id']
 
         try:

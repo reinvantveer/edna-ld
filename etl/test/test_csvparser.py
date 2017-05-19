@@ -32,11 +32,14 @@ class TestCsvToJson(unittest.TestCase):
         self.assertEqual(data, [{"column1": "data1", "num": 1}, {"column1": "data3", "num": 2}])
 
     def test_latin_1(self):
-        data = CSVparser.to_dict(current_dir + '/mockups/csv/test_latin_1.csv')
+        data = CSVparser.to_dict(current_dir + '/mockups/csv/test_unicode.csv')
         self.assertEqual(data, [{"column1": "data1", "column2": "data2"},
-                                {"column1": "data3", "column2": "\u00c3\u00ab"}])
-        # There is supposed to be "ë" written here. See the test file. Some kind of utf-8 -> latin-1 back-transcoding is
-        # probably needed.
+                                {"column1": "data3", "column2": "Siberië"}])
+
+    def test_non_unicode(self):
+        data = CSVparser.to_dict(current_dir + '/mockups/csv/test_non_unicode.csv')
+        print(data)
+        self.assertEqual(data[0]['OMSCHRIJF'], 'mal voor reliëf')
 
     def test_no_csv(self):
         with self.assertRaisesRegex(ValueError, 'invalid csv'):

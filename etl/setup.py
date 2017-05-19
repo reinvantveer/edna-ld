@@ -15,6 +15,8 @@ setup(
         'GDAL',
         'PyYAML',
         'GenSON',
+        'chardet',
+        'BeautifulSoup4'
     ],
     test_suite='nose.collector',
     tests_require=['nose'],

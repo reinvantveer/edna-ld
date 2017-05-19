@@ -11,6 +11,7 @@ current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentfra
 
 testfile = os.path.join(current_dir, 'mockups', 'csv', 'test_sha1.txt')
 
+
 class TestFileHasher(unittest.TestCase):
     def test_file_hasher(self):
         sha1 = FileStatter.sha1_from_file(testfile)
@@ -39,6 +40,9 @@ class TestFileHasher(unittest.TestCase):
         })
         self.assertEqual(sha1, 'ac261a43b896c8216a567e146f0f9fdc8951b5df')
 
+    def test_data_hasher_from_list(self):
+        sha1 = FileStatter.sha1([{'data': 'some data'}])
+        self.assertEqual(sha1, '297c88ed1e2052e7fac31426fe6b85502ad4c717')
 
 def main():
     unittest.main()

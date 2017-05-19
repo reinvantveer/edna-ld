@@ -18,6 +18,8 @@ class FileStatter:
             d = hashlib.sha1(data.encode())
         elif type(data) is dict:
             d = hashlib.sha1(str(data).encode())
+        elif type(data) is list:
+            d = hashlib.sha1(str(data).encode())
         else:
             raise TypeError('Unable to create SHA1 from variable type %s' % type(data))
 
