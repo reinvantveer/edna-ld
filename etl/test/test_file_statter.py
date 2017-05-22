@@ -44,6 +44,7 @@ class TestFileHasher(unittest.TestCase):
         sha1 = FileStatter.sha1([{'data': 'some data'}])
         self.assertEqual(sha1, '297c88ed1e2052e7fac31426fe6b85502ad4c717')
 
+
 def main():
     unittest.main()
 

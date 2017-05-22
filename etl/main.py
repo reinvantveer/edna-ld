@@ -53,17 +53,21 @@ def init_mongodb(cfg=config):
     file_collection = db[cfg['mongo']['fileCollection']]
     schema_collection = db[cfg['mongo']['schemaCollection']]
     source_data_collection = db[cfg['mongo']['sourcedataCollection']]
-    return file_collection, schema_collection, source_data_collection
+    return mongodb, file_collection, schema_collection, source_data_collection
+
 
 
 def run(file_path):
+    # Init logging and database
     init_logging()
-    file_col, schema_col, source_data_col = init_mongodb(config)
+    client, file_col, schema_col, source_data_col = init_mongodb(config)
 
-    file_list = DirLister.get_file_list_recursive(file_path)
-    logging.info('Processing %d files from %s' % (len(file_list), file_path))
-
+    # Set up counters and file index
+    successfully_ingested_files = 0
     file_counter = 0
+    file_list = DirLister.get_file_list_recursive(file_path)
+
+    logging.info('Processing %d files from %s' % (len(file_list), file_path))
 
     for file in file_list:
         file_counter += 1
@@ -105,7 +109,7 @@ def run(file_path):
         schema_hash = FileStatter.sha1(json.dumps(schema_data))
         schema = {
             '_id': schema_hash,
-            'schemadata': schema_data,
+            'schema': schema_data,
         }
 
         try:
@@ -113,7 +117,7 @@ def run(file_path):
         except DuplicateKeyError:
             logging.debug('Schema %s was previously processed' % schema_hash)
         except Exception as e:
-            logging.error(e)
+            logging.error('Ingest schema error on file %s: %s' % (file, e))
             # if the schema loading doesn't work out, just log the error and skip the file
             continue
 
@@ -127,9 +131,9 @@ def run(file_path):
         try:
             source_data_col.insert_one(document=source_data_doc)
         except DuplicateKeyError:
-            logging.debug('Sourcedata with sha1 %s was previously processed' % file)
+            logging.debug('Sourcedata with sha1 %s was previously processed' % source_data_doc_sha1)
         except Exception as e:
-            logging.error(e)
+            logging.error('Ingest source data error on file %s: %s' % (file, e))
             continue
 
         # Finalize the file document with the data reference and the schema reference
@@ -143,11 +147,15 @@ def run(file_path):
             # Skip to next file
             continue
         except Exception as e:
-            logging.error(e)
+            logging.error('Ingest file metadata error on file %s: %s' % (file, e))
             continue
 
         logging.debug('File %s was successfully ingested' % file)
+        successfully_ingested_files += 1
 
+    logging.info('Finished!')
+    logging.info('Successfully ingested %d files of %d' % (len(file_list), successfully_ingested_files))
+    client.close()
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:

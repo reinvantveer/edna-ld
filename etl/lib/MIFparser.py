@@ -30,6 +30,10 @@ class MIFparser:
 
             # tack on the geometry as well-known text
             geom = feature.GetGeometryRef()
+
+            if not geom:
+                raise ValueError('Unable to extract geometries from %s' % file_path)
+
             wkt_feature['WKT'] = geom.ExportToWkt()
             wkt_features.append(wkt_feature)
 
