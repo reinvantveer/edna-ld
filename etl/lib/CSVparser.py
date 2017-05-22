@@ -11,7 +11,6 @@ class CSVparser:
     def to_dict(file_path):
         with open(file_path, 'rb') as detect_file_encoding:
             detection = chardet.detect(detect_file_encoding.read())
-        print('Chardet:', detection)
 
         if detection['encoding'] == 'ascii':
             with open(file_path, encoding='ascii') as file:
@@ -39,6 +38,8 @@ class CSVparser:
             delimiter=dialect.delimiter,
         )
         dictionary = frame.to_dict(orient='record')
+
         if not dictionary:
             raise ValueError('Can\'t return dictionary from invalid csv file %s' % file_path)
+
         return dictionary

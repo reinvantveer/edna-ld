@@ -38,7 +38,6 @@ class TestCsvToJson(unittest.TestCase):
 
     def test_non_unicode(self):
         data = CSVparser.to_dict(current_dir + '/mockups/csv/test_non_unicode.csv')
-        print(data)
         self.assertEqual(data[0]['OMSCHRIJF'], 'mal voor reliëf')
 
     def test_no_csv(self):
