@@ -1,4 +1,1 @@
-"Spoor","SpoorGIS","Structuur","Spoo_vervalt","Put","Vlak","Profiel/coupe","Type","Datum","NAP","Tekening","Bovenliggend","Onderliggend","Contemporain met","Interpretatie","Datering","Daterin_vondstmateriaal","Opmerkingen","Identiek aan","Textuur en inhoud","Omschrijving","Auteur spoorformulier","Conservering","Vondsten","Houtskool","Typologie"
-1001,"1001","999",False,"1","1",,"VERSTORING",14-2-2014,,,,,,"sleuf bestaande leiding WML","NTC",,,,"zand en leem, bruin en lichtbruin, sterk heterogeen",,"F. Delporte",,"No","No",
-1002,"1002","998",False,"1","2",,"NATUURLIJK",14-2-2014,,,,,,"leeg spoor, is in coupe ondiep en spits",,,,,"leem, bruingrijs",,"F. Delporte",,"No","No",
-1003,"1003","998",False,"1","2",,"NATUURLIJK",14-2-2014,,,,,,"leeg spoor, blijkt in coupe mollegang iod",,,,,"leem, bruingrijs",,"F. Delporte",,"No","No",
+Let's have some text in here, but without line endings because this will break the sha1 unit tests.

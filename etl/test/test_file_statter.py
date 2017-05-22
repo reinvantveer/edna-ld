@@ -15,12 +15,12 @@ testfile = os.path.join(current_dir, 'mockups', 'csv', 'test_sha1.txt')
 class TestFileHasher(unittest.TestCase):
     def test_file_hasher(self):
         sha1 = FileStatter.sha1_from_file(testfile)
-        self.assertEqual(sha1, 'b1200974728d4d55e92b8be30af8d39ccd4c4a1b')
+        self.assertEqual(sha1, 'df4b5e0bf4df6bb62fcb659015885859cf3f1b63')
 
     def test_data_hasher_from_read_file(self):
         with open(testfile, mode='rb') as test_data:
             sha1 = FileStatter.sha1(test_data)
-            self.assertEqual(sha1, 'b1200974728d4d55e92b8be30af8d39ccd4c4a1b')
+            self.assertEqual(sha1, 'df4b5e0bf4df6bb62fcb659015885859cf3f1b63')
 
     def test_data_hasher_from_string(self):
         sha1 = FileStatter.sha1('this is a string')
