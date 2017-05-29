@@ -46,7 +46,6 @@ class CSVparser:
             for key in record:
                 print(key)
                 if '.' in key:
-                    print('Dot in key!')
                     new_key = key.replace('.', '\uff0e')
                     record[new_key] = record.pop(key)
 
