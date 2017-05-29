@@ -6,8 +6,8 @@ This module has a heavy dependency on the python GDAL package, which can be
  a total pain in the ass to install, depending on your platform. 
  
  Support for Windows is easiest through the OSGeo4W installer, which comes
-
 """
+
 
 class MIFparser:
     """

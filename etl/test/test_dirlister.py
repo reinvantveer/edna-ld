@@ -12,10 +12,10 @@ current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentfra
 
 class TestGetDirList(unittest.TestCase):
     def test_get_file_list_recursive(self):
-        dir_list = DirLister.get_file_list_recursive(os.path.join(current_dir, 'mockups', 'mif'))
+        dir_list = DirLister.get_file_list_recursive(os.path.join(current_dir, 'mockups', 'dir'))
         self.assertEqual(sorted(dir_list), [
-            os.path.join(current_dir, 'mockups', 'mif', 'test.mid'),
-            os.path.join(current_dir, 'mockups', 'mif', 'test.mif')
+            os.path.join(current_dir, 'mockups', 'dir', 'recursive', 'test1.txt'),
+            os.path.join(current_dir, 'mockups', 'dir', 'recursive', 'test', 'test2.txt')
         ])
 
 
