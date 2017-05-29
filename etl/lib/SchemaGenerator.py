@@ -20,6 +20,7 @@ class SchemaGenerator:
                 new_key = key.replace('.', '\uff0e')
                 schema_dict['items']['properties'][new_key] = schema_dict['items']['properties'].pop(key)
         required_ = schema_dict['items']['required']
+
         for required_val in required_:
             if '.' in required_val:
                 required_.append(

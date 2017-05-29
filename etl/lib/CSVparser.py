@@ -9,7 +9,7 @@ class CSVparser:
     @staticmethod
     def to_dict(file_path):
         with open(file_path, 'rb') as detect_file_encoding:
-            detection = chardet.detect(detect_file_encoding.read(1024))
+            detection = chardet.detect(detect_file_encoding.read())
 
         if detection['encoding'] == 'ISO-8859-9':
             # Some files with "ë" in them are erroneously parsed as iso-8859-9/latin-5/Turkish
@@ -41,5 +41,13 @@ class CSVparser:
 
         if not dictionary:
             raise ValueError('Can\'t return dictionary from invalid csv file %s' % file_path)
+
+        for record in dictionary:
+            for key in record:
+                print(key)
+                if '.' in key:
+                    print('Dot in key!')
+                    new_key = key.replace('.', '\uff0e')
+                    record[new_key] = record.pop(key)
 
         return dictionary

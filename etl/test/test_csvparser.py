@@ -31,6 +31,10 @@ class TestCsvToJson(unittest.TestCase):
         data = CSVparser.to_dict(current_dir + '/mockups/csv/test_single_quotes.csv')
         self.assertEqual(data, [{"column1": "data1", "num": 1}, {"column1": "data3", "num": 2}])
 
+    def test_escape_dots(self):
+        data = CSVparser.to_dict(current_dir + '/mockups/csv/test_dot_escaping.csv')
+        self.assertEqual(data, [{"Data$Column2": "data2", "Data\uff0eColumn1": "data1"}])
+
     def test_latin_1(self):
         data = CSVparser.to_dict(current_dir + '/mockups/csv/test_unicode.csv')
         self.assertEqual(data, [{"column1": "data1", "column2": "data2"},
