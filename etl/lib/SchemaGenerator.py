@@ -21,7 +21,6 @@ class SchemaGenerator:
                 schema_dict['items']['properties'][new_key] = schema_dict['items']['properties'].pop(key)
         required_ = schema_dict['items']['required']
         for required_val in required_:
-            print(required_val)
             if '.' in required_val:
                 required_.append(
                     required_.pop(
