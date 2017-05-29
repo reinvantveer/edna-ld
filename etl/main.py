@@ -71,8 +71,7 @@ def run(file_path):
 
     for file in file_list:
         file_counter += 1
-        ProgressBar.update_progress(file_counter / len(file_list))
-        print('Processing file %s' % file)
+        ProgressBar.update_progress(file_counter / len(file_list), ('Processing file %s' % file))
 
         # get the file stats
         document = {

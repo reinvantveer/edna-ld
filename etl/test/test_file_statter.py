@@ -1,4 +1,5 @@
 import inspect
+import json
 import unittest
 import os
 import sys
@@ -38,7 +39,7 @@ class TestFileHasher(unittest.TestCase):
                 'required': ['column1', 'column2']
             }
         })
-        self.assertEqual(sha1, 'ac261a43b896c8216a567e146f0f9fdc8951b5df')
+        self.assertEqual(sha1, 'a471c364d74034ddc779d3498301a3c6adf871ed')
 
     def test_data_hasher_from_list(self):
         sha1 = FileStatter.sha1([{'data': 'some data'}])
