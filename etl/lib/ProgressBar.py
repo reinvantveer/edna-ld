@@ -35,6 +35,6 @@ class ProgressBar:
             status = "Done...\r\n"
         block = int(round(bar_length*progress))
         progress_rounded = "{:10.2f}".format(float(progress*100))
-        text = "\rPercent: [{0}] {1}% {2} - {3}".format("#"*block + "-"*(bar_length-block), progress_rounded, status, message)
+        text = "\r\nPercent: [{0}] {1}% {2} - {3}".format("#"*block + "-"*(bar_length-block), progress_rounded, status, message)
         sys.stdout.write(text)
         sys.stdout.flush()
