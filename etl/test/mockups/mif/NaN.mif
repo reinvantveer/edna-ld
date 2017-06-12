@@ -1,0 +1,10 @@
+VERSION 300
+DELIMITER ","
+ CoordSys Earth Projection 20, 109, "m", 5.387638889, 52.156160556, 0.9999079, 155000, 463000                                                                                                           
+COLUMNS 3
+    FID integer
+    Id integer
+    PUT char(5)
+DATA
+LINE 1.#QNAN 1.#QNAN 1.#QNAN
+PEN(1,2,1048716)

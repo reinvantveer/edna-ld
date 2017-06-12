@@ -12,7 +12,7 @@ currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentfram
 
 class TestMifToDict(unittest.TestCase):
     def test_simple(self):
-        data = MIFparser.to_dict(file_path=currentdir + '/mockups/mif/test.mif')
+        data = MIFparser.to_dict(currentdir + '/mockups/mif/test.mif')
         self.assertEqual(data, [{
             'WKT': 'POLYGON ((-805746.744932638 -5717724.87367326,-836150.816258327 '
                    '-5650307.1502989,-744938.602281261 '
@@ -26,6 +26,10 @@ class TestMifToDict(unittest.TestCase):
     def test_no_mif(self):
         with self.assertRaisesRegex(ValueError, 'Unable to read'):
             MIFparser.to_dict('non-existent.mif')
+
+    def test_catch_NaN_error(self):
+        with self.assertRaisesRegex(ValueError, 'Unable to extract features'):
+            MIFparser.to_dict(currentdir + '/mockups/mif/NaN.mif')
 
 
 def main():
