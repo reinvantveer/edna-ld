@@ -23,6 +23,14 @@ class TestMifToDict(unittest.TestCase):
             "test_text": "this is a test"
         }])
 
+    # TODO: unit test for handling segmentation faults
+    '''
+    # The code below will generate the segfault but I have no way of handling it
+    def test_segfault_mif(self):
+         with self.assertRaisesRegex(ValueError, 'opuerw'):
+             MIFparser.to_dict(file_path=currentdir + '/mockups/mif/segfault.mif')
+    '''
+
     def test_no_mif(self):
         with self.assertRaisesRegex(ValueError, 'Unable to read'):
             MIFparser.to_dict('non-existent.mif')

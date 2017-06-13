@@ -1,4 +1,7 @@
 from osgeo import gdal
+import signal
+
+from osgeo import ogr
 import json
 
 gdal.UseExceptions()
@@ -17,9 +20,23 @@ class MIFparser:
     This class is responsible for reading MapInfo Interchange Format files.
     They are recognizable by the .mif (upper or lowercase) file extension.
     """
+
+    # Catch segmentation faults
+    @staticmethod
+    def _sig_handler(signum, frame):
+        raise ValueError("segfault")
+
     @staticmethod
     def to_dict(file_path):
+        # TODO: write code to actually handle the error!
+        # signal.signal(signal.SIGSEGV, MIFparser._sig_handler)
+
         wkt_features = []  # Initialize empty array of target features
+        try:
+            data_source = ogr.Open(file_path, 0)
+        except Exception as e:
+            raise ValueError(e)
+
         data_source = gdal.ogr.Open(file_path, 0)
 
         err = gdal.GetLastErrorMsg()

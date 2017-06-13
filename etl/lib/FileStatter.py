@@ -1,6 +1,7 @@
 import hashlib
 
 import _io
+import json
 import os
 from functools import partial
 
@@ -17,7 +18,8 @@ class FileStatter:
         elif type(data) is str:
             d = hashlib.sha1(data.encode())
         elif type(data) is dict:
-            d = hashlib.sha1(str(data).encode())
+            d = hashlib.sha1(json.dumps(data, sort_keys=True).encode())
+            return d.hexdigest()
         elif type(data) is list:
             d = hashlib.sha1(str(data).encode())
         else:

@@ -4,7 +4,7 @@ services:
   mongo:
     image: mongo
     volumes:
-      - mongodata:/data/db
+      - /data/EDNA-LD_EXT/db:/data/db
     networks:
       - default
     ports:

@@ -56,7 +56,6 @@ def init_mongodb(cfg=config):
     return mongodb, file_collection, schema_collection, source_data_collection
 
 
-
 def run(file_path):
     # Init logging and database
     init_logging()
@@ -71,8 +70,7 @@ def run(file_path):
 
     for file in file_list:
         file_counter += 1
-        ProgressBar.update_progress(file_counter / len(file_list))
-        print('Processing file %s' % file)
+        ProgressBar.update_progress(file_counter / len(file_list), ('Processing file %s' % file))
 
         # get the file stats
         document = {
@@ -107,7 +105,7 @@ def run(file_path):
             logging.error('Schema error on file %s: %s' % (file, e))
             continue
 
-        schema_hash = FileStatter.sha1(json.dumps(schema_data))
+        schema_hash = FileStatter.sha1(schema_data)
         schema = {
             '_id': schema_hash,
             'schema': schema_data,
@@ -155,7 +153,7 @@ def run(file_path):
         successfully_ingested_files += 1
 
     logging.info('Finished!')
-    logging.info('Successfully ingested %d files of %d' % (len(file_list), successfully_ingested_files))
+    logging.info('Successfully ingested %d files of %d' % (successfully_ingested_files, len(file_list)))
     client.close()
 
 if __name__ == '__main__':
