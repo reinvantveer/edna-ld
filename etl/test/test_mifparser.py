@@ -36,8 +36,12 @@ class TestMifToDict(unittest.TestCase):
             MIFparser.to_dict('non-existent.mif')
 
     def test_catch_NaN_error(self):
-        with self.assertRaisesRegex(ValueError, 'Unable to extract features'):
+        with self.assertRaisesRegex(ValueError, 'Unable to extract'):
             MIFparser.to_dict(currentdir + '/mockups/mif/NaN.mif')
+
+    def test_catch_other_error(self):
+        with self.assertRaisesRegex(ValueError, 'Unable to extract'):
+            MIFparser.to_dict(currentdir + '/mockups/mif/error.mif')
 
 
 def main():

@@ -53,7 +53,11 @@ class MIFparser:
 
         for feature in layer:
             # shortcut to dumping non-geometry attributes from feature to our dictionary
-            geojson = feature.ExportToJson()
+            try:
+                geojson = feature.ExportToJson()
+            except Exception as e:
+                raise ValueError('Unable to extract features from file %s due to %s' % (file_path, e))
+
             geojson_as_dict = json.loads(geojson)
             wkt_feature = geojson_as_dict['properties']
 
