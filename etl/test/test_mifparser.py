@@ -40,7 +40,9 @@ class TestMifToDict(unittest.TestCase):
             MIFparser.to_dict(currentdir + '/mockups/mif/NaN.mif')
 
     def test_catch_other_error(self):
-        with self.assertRaisesRegex(ValueError, 'Unable to extract'):
+        with self.assertRaises(ValueError):
+            # Platform-dependent implementations do not allow specifying a specific error message!
+            # The main point is that the parser should catch the error, and not crash the program
             MIFparser.to_dict(currentdir + '/mockups/mif/error.mif')
 
 
