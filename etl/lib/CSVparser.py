@@ -9,7 +9,8 @@ class CSVparser:
     @staticmethod
     def to_dict(file_path):
         with open(file_path, 'rb') as detect_file_encoding:
-            detection = chardet.detect(detect_file_encoding.read())
+            # restrict encoding parsing to 2 ** 24 chars
+            detection = chardet.detect(detect_file_encoding.read(2 ** 24))
 
         if detection['encoding'] == 'ISO-8859-9':
             # Some files with "ë" in them are erroneously parsed as iso-8859-9/latin-5/Turkish
