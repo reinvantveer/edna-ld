@@ -89,6 +89,7 @@ def run(file_path):
                 # if the data loading doesn't work out, just log the error and skip the file
                 continue
         elif file.lower().endswith('.mid'):
+            logging.debug('Skipping .mid file.')
             continue  # .mid files are processed along with its 'parented' .mif file
         else:
             try:
